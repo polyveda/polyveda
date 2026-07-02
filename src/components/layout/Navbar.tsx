@@ -170,15 +170,19 @@ export function Navbar() {
                       onMouseLeave={() => setHoveredNav(null)}
                       className={styles.navLinkRow}
                     >
-                      <motion.svg 
-                        animate={{ width: isHovered ? 48 : 0 }} 
-                        width="0" height="31" viewBox="0 0 105 62" fill="none" 
-                        xmlns="http://www.w3.org/2000/svg"
+                      <motion.div
+                        animate={{ width: isHovered ? 48 : 0, marginRight: isHovered ? 12 : 0 }}
                         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                        style={{ overflow: 'visible', marginRight: isHovered ? '8px' : '0px' }}
+                        style={{ overflow: 'hidden', display: 'flex', alignItems: 'center', flexShrink: 0 }}
                       >
-                        <path d="M0 31H103M103 31L73.5 1.5M103 31L73.5 60.5" stroke="var(--color-text-light)" strokeWidth="4" vectorEffect="non-scaling-stroke"/>
-                      </motion.svg>
+                        <svg 
+                          width="48" height="31" viewBox="0 0 105 62" fill="none" 
+                          xmlns="http://www.w3.org/2000/svg"
+                          style={{ flexShrink: 0, minWidth: '48px' }}
+                        >
+                          <path d="M0 31H103M103 31L73.5 1.5M103 31L73.5 60.5" stroke="var(--color-text-light)" strokeWidth="4" vectorEffect="non-scaling-stroke"/>
+                        </svg>
+                      </motion.div>
                       
                       <Link href={link.url} className={styles.navLink} onClick={() => setIsOpen(false)}>
                         {link.title}
