@@ -20,6 +20,10 @@ export function Preloader() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Only run the sequence if we are in the initial 'logo' phase.
+    // This prevents the preloader from resurrecting and blinking on subsequent route changes.
+    if (phase !== 'logo') return;
+
     // If not on the homepage, just finish quickly
     if (pathname !== '/') {
       const timer = setTimeout(() => {
@@ -31,7 +35,7 @@ export function Preloader() {
     }
 
     // On homepage, wait for loadProgress to hit 100%
-    if (loadProgress >= 100 && phase === 'logo') {
+    if (loadProgress >= 100) {
       // Add a slight dramatic pause after hitting 100% before flying
       const timer = setTimeout(() => {
         setPreloaderDone(true);
