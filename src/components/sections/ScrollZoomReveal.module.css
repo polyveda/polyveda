@@ -10,8 +10,8 @@
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(29, 84, 109, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(29, 84, 109, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(29, 84, 109, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 84, 109, 0.1) 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: center center;
   z-index: 0;

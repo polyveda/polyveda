@@ -1,8 +1,8 @@
 .section {
   padding: var(--spacing-12) var(--spacing-3);
-  background-color: var(--color-surface-light);
-  border-top: 1px solid rgba(11, 18, 21, 0.05);
-  border-bottom: 1px solid rgba(11, 18, 21, 0.05);
+  background-color: #FFFFFF;
+  border-top: 1px solid rgba(11, 18, 21, 0.08);
+  border-bottom: 1px solid rgba(11, 18, 21, 0.08);
 }
 .container {
   max-width: 1440px;
@@ -26,15 +26,15 @@
   gap: var(--spacing-4);
 }
 .card {
-  background-color: var(--color-bg-light);
+  background-color: #FFFFFF;
   padding: var(--spacing-6);
   border-radius: var(--border-radius-md);
-  border: 1px solid rgba(11, 18, 21, 0.05);
+  border: 1px solid rgba(11, 18, 21, 0.08);
   transition: transform 200ms ease, border-color 200ms ease;
 }
 .card:hover {
   transform: translateY(-4px);
-  border-color: rgba(29, 84, 109, 0.15); /* Ocean Blue border on hover */
+  border-color: rgba(29, 84, 109, 0.25);
 }
 .card h3 {
   font-size: 20px;

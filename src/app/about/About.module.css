@@ -50,8 +50,8 @@
   font-family: var(--font-heading); font-size: clamp(26px, 3vw, 44px);
   font-weight: 600; letter-spacing: -1px; line-height: 1.15; color: var(--color-text-dark); margin: 0 0 40px;
 }
-.ppCards { display: grid; grid-template-columns: 1fr; gap: 2px; background: rgba(11,18,21,0.08); border-top: 1.5px solid var(--color-bg-dark); }
-.ppCard { background: var(--color-bg-light); padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 48px); }
+.ppCards { display: grid; grid-template-columns: 1fr; gap: 2px; background: rgba(11,18,21,0.12); border-top: 1.5px solid var(--color-bg-dark); }
+.ppCard { background: #FFFFFF; padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 48px); }
 .ppCardLabel {
   display: block; font-family: var(--font-base); font-size: 11px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 14px;

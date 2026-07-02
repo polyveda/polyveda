@@ -64,10 +64,10 @@
 
 /* Post grid */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; padding-top: 24px; }
-.card { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--color-bg-light); border: 1px solid rgba(11,18,21,0.1); border-radius: 4px; overflow: hidden; transition: transform 250ms ease, box-shadow 250ms ease; height: 100%; }
+.card { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: #FFFFFF; border: 1px solid rgba(11,18,21,0.1); border-radius: 4px; overflow: hidden; transition: transform 250ms ease, box-shadow 250ms ease; height: 100%; }
 .cardImage { width: 100%; aspect-ratio: 16/10; overflow: hidden; }
 .cardContent { padding: 32px; display: flex; flex-direction: column; flex: 1; }
-.card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); border-color: var(--color-accent); }
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: var(--color-accent); }
 .meta { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
 .category {
   font-family: var(--font-base); font-size: 11px; font-weight: 600;
