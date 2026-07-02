@@ -6,7 +6,7 @@ import { motion, useInView } from 'framer-motion';
 import styles from './Products.module.css';
 import { productsData } from '@/data/products';
 
-const fadeUp = {
+const fadeUp: any = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
