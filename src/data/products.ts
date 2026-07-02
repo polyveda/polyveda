@@ -24,7 +24,7 @@ export const productsData: Product[] = [
     tagline: 'Built to outlast cardboard by 50+ cycles.',
     description: 'Custom-designed from premium PP corrugated flute board. Moisture-resistant, superior strength-to-weight ratio, and fully collapsible for return logistics.',
     longDescription: 'Polyveda PP Corrugated Boxes are engineered for high-volume, closed-loop supply chains. Unlike traditional cardboard, these reusable plastic boxes are completely impervious to moisture, resistant to chemicals, and do not generate dust — making them ideal for cleanroom environments, cold chain logistics, and heavy industrial use. Featuring sonic-welded edges and customizable inserts, these boxes reduce total packaging costs by over 60% through extended reuse cycles.',
-    image: '/products/pp_boxes.png',
+    image: 'https://res.cloudinary.com/kouanazg/image/upload/v1782977439/Polypropylene_corrugated_boxes_yrxmtc.jpg',
     metaTitle: 'PP Corrugated Boxes | Reusable Packaging India | Polyveda',
     metaDescription: 'Buy high-quality PP corrugated boxes in India. Moisture-proof, 50+ reuse cycles, fully collapsible. Custom-engineered by Polyveda for industrial and logistics use.',
     specs: [
@@ -50,7 +50,7 @@ export const productsData: Product[] = [
     tagline: 'Zero movement. Zero damage.',
     description: 'Precision-engineered with CNC-cut custom cavities to cradle individual components. Available in ESD-safe conductive variants for electronics.',
     longDescription: 'Polyveda Custom PP Trays are designed to secure high-value or highly sensitive components during transit and assembly. Using advanced CNC cutting and thermoforming techniques, we create exact-fit cavities that eliminate part-to-part contact and vibration damage. These trays are stackable, nestable, and designed to integrate seamlessly with automated robotic assembly lines in electronics and pharmaceutical environments.',
-    image: '/products/pp_trays.png',
+    image: 'https://res.cloudinary.com/kouanazg/image/upload/v1782977438/Polypropylene_corrugated_trays_xmchgg.jpg',
     metaTitle: 'Custom PP Trays | ESD-Safe Packaging for Electronics | Polyveda',
     metaDescription: 'Custom PP trays with CNC-cut cavities for electronics, PCBs, and precision components. ESD-safe conductive variants available. Manufactured in India by Polyveda.',
     specs: [
@@ -76,7 +76,7 @@ export const productsData: Product[] = [
     tagline: 'Industrial strength. Reusable by design.',
     description: 'Collapsible heavy-duty trunks fitted with custom handles, lids, and EVA/EPE foam padding. Built for just-in-time automotive supply chains.',
     longDescription: 'When transporting heavy automotive components, metal castings, or bulk raw materials, Polyveda PP Trunks & Crates offer unparalleled strength-to-weight performance. Reinforced with metal or hard plastic corner extrusions, these returnable plastic crates withstand immense stacking pressure. The interiors can be customized with cross-link PE or EVA foam dunnage to protect class-A surfaces during every transit cycle.',
-    image: '/products/pp_trunks.png',
+    image: 'https://res.cloudinary.com/kouanazg/image/upload/v1782977438/Corrugated_polypropylene_trunks___2K_202607011117_mwdigt.jpg',
     metaTitle: 'PP Trunks & Crates | Heavy-Duty Returnable Packaging | Polyveda',
     metaDescription: 'Heavy-duty PP corrugated crates and trunks for automotive and industrial use. Load capacity up to 500kg. Collapsible, reusable, and reinforced. Made in India.',
     specs: [
@@ -102,7 +102,7 @@ export const productsData: Product[] = [
     tagline: 'Protect marble, tile & granite during renovation.',
     description: 'High-quality corrugated PP sheets engineered to safeguard floors during heavy-duty construction and renovation. Impermeable to paint and adhesives.',
     longDescription: 'Polyveda PP Floor Protection Sheets are the professional standard for protecting high-value surfaces — marble, hardwood, tile, and epoxy — during construction, renovation, and fit-out phases across India. Unlike rosin paper or thin plastic films, our sheets are highly puncture-resistant, absorbing impacts from dropped tools and heavy equipment. Completely waterproof, they ensure paint, adhesive, and spills never reach the floor below.',
-    image: '/products/floor_protection.png',
+    image: 'https://res.cloudinary.com/kouanazg/image/upload/v1782977438/Floor_Protection_Sheets_renovation_2K_202607011126_i7q3dz.jpg',
     metaTitle: 'PP Floor Protection Sheets | Construction & Renovation | Polyveda',
     metaDescription: 'Buy corrugated PP floor protection sheets for construction in India. Anti-slip, non-marking, waterproof. Protects marble, tile, and hardwood floors. Reusable.',
     specs: [
@@ -128,7 +128,7 @@ export const productsData: Product[] = [
     tagline: 'Printed. Weatherproof. Eye-catching.',
     description: 'Durable, weather-resistant PP corrugated signage for indoor and outdoor use. POS & POP display stands, and lightweight customizable exhibition stalls.',
     longDescription: 'Leveraging the smooth, corona-treated surface of our premium PP corrugated sheets, Polyveda manufactures vibrant, high-resolution signage and Point-of-Sale (POS) displays for retail and marketing use. Our displays are incredibly lightweight yet structurally rigid, making them perfect for trade shows, retail environments, and outdoor real estate signage across India. Impervious to rain and UV-stabilized, they will not warp or degrade in harsh outdoor conditions.',
-    image: '/products/signage_displays.png',
+    image: 'https://res.cloudinary.com/kouanazg/image/upload/v1782977438/Signage_and_Retail_Displays_2K_202607011129_fi0jb0.jpg',
     metaTitle: 'PP Corrugated Signage & Retail Displays | Polyveda India',
     metaDescription: 'Custom PP corrugated signage, POS displays, and exhibition stands. Weatherproof, UV-stable, lightweight. High-resolution printing available. Manufactured in India.',
     specs: [
