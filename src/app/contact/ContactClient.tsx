@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import styles from './Contact.module.css';
@@ -67,52 +68,69 @@ export default function Contact() {
         </div>
         
         <div className={styles.formWrapper}>
-          {status === 'success' ? (
-            <div className={styles.successState}>
-              <h2>Request Received</h2>
-              <p>Thank you. Our engineering team is reviewing your details and will contact you within 24 hours.</p>
-              <Button onClick={() => setStatus('idle')} variant="outline">Submit Another Request</Button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className={styles.form}>
-              <div className={styles.formRow}>
-                <Input name="fullName" label="Full Name" required />
-                <Input name="companyName" label="Company Name" required />
-              </div>
-              
-              <div className={styles.formRow}>
-                <Input name="email" type="email" label="Work Email" required />
-                <Input name="phone" type="tel" label="Phone Number" required />
-              </div>
-              
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Industry</label>
-                <select name="industry" className={styles.select} required>
-                  <option value="">Select your industry...</option>
-                  <option value="automotive">Automotive</option>
-                  <option value="ecommerce">E-Commerce</option>
-                  <option value="electronics">Electronics</option>
-                  <option value="healthcare">Healthcare</option>
-                  <option value="other">Other Heavy Industry</option>
-                </select>
-              </div>
+          <AnimatePresence mode="wait">
+            {status === 'success' ? (
+              <motion.div 
+                key="success"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4 }}
+                className={styles.successState}
+              >
+                <h2>Request Received</h2>
+                <p>Thank you. Our engineering team is reviewing your details and will contact you within 24 hours.</p>
+                <Button onClick={() => setStatus('idle')} variant="outline">Submit Another Request</Button>
+              </motion.div>
+            ) : (
+              <motion.form 
+                key="form"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4 }}
+                onSubmit={handleSubmit} 
+                className={styles.form}
+              >
+                <div className={styles.formRow}>
+                  <Input name="fullName" label="Full Name" required />
+                  <Input name="companyName" label="Company Name" required />
+                </div>
+                
+                <div className={styles.formRow}>
+                  <Input name="email" type="email" label="Work Email" required />
+                  <Input name="phone" type="tel" label="Phone Number" required />
+                </div>
+                
+                <div className={styles.formGroup}>
+                  <label className={styles.label}>Industry</label>
+                  <select name="industry" className={styles.select} required>
+                    <option value="">Select your industry...</option>
+                    <option value="automotive">Automotive</option>
+                    <option value="ecommerce">E-Commerce</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="other">Other Heavy Industry</option>
+                  </select>
+                </div>
 
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Project Details</label>
-                <textarea 
-                  name="projectDetails"
-                  className={styles.textarea} 
-                  rows={5} 
-                  placeholder="Describe your load requirements, dimensions, or current packaging pain points..."
-                  required
-                />
-              </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.label}>Project Details</label>
+                  <textarea 
+                    name="projectDetails"
+                    className={styles.textarea} 
+                    rows={5} 
+                    placeholder="Describe your load requirements, dimensions, or current packaging pain points..."
+                    required
+                  />
+                </div>
 
-              <Button type="submit" disabled={status === 'submitting'} className={styles.submitBtn}>
-                {status === 'submitting' ? 'Submitting...' : 'Request Quote & Download Capability PDF'}
-              </Button>
-            </form>
-          )}
+                <Button type="submit" disabled={status === 'submitting'} className={styles.submitBtn}>
+                  {status === 'submitting' ? 'Submitting...' : 'Request Quote & Download Capability PDF'}
+                </Button>
+              </motion.form>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>

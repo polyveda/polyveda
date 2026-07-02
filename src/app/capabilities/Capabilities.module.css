@@ -356,6 +356,8 @@
 
 .ctaBtn:hover {
   background-color: #4b7a7c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* ── Responsive ── */
@@ -444,4 +446,6 @@
   background: rgba(95,149,152,0.12);
   border-color: var(--color-accent);
   color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
