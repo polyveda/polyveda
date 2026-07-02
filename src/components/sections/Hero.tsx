@@ -87,6 +87,13 @@ export function Hero() {
               <span className={styles.centerTitleAccent}>Designed to return.</span>
             </h1>
             <div className={styles.hudLineBottom} />
+            <motion.div 
+              className={styles.mobileScrollPrompt}
+              animate={{ y: [0, 8, 0] }} 
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            >
+              ↓ Keep Scrolling
+            </motion.div>
           </motion.div>
 
           {/* ── BOTTOM-LEFT ANCHOR — always visible ── */}
