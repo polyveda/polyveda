@@ -1,0 +1,183 @@
+.page {
+  min-height: 100vh;
+  background-color: var(--color-bg-dark);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Hero ── */
+.hero {
+  padding: 180px 0 100px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg-dark);
+}
+
+.heroGridBackground {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--color-accent);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 8vw, 96px);
+  letter-spacing: -2px;
+  line-height: 1.05;
+  color: var(--color-text-light);
+  margin: 0 0 32px;
+}
+
+.heroSub {
+  font-family: var(--font-base);
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--color-text-muted-light);
+  max-width: 700px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Standards Section ── */
+.standardsSection {
+  padding: 80px 0 120px;
+  background-color: var(--color-bg-light); 
+  position: relative;
+}
+
+.gridBackground {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(29, 84, 109, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 84, 109, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background-color: rgba(11, 18, 21, 0.08);
+  border: 1px solid rgba(11, 18, 21, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  background-color: #FFFFFF;
+  padding: 64px 48px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  z-index: 2;
+  position: relative;
+}
+
+.iconWrapper {
+  color: var(--color-accent);
+  margin-bottom: 24px;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  letter-spacing: -0.5px;
+  color: var(--color-text-dark);
+  margin: 0 0 16px;
+}
+
+.cardText {
+  font-family: var(--font-base);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-muted-dark);
+  margin: 0;
+}
+
+/* ── Closing CTA ── */
+.ctaSection {
+  padding: 120px 0;
+  background-color: var(--color-bg-dark);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ctaTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -1px;
+  color: var(--color-text-light);
+  margin: 0 0 16px;
+}
+
+.ctaText {
+  font-family: var(--font-base);
+  font-size: 18px;
+  color: var(--color-text-muted-light);
+  margin: 0 auto 40px;
+  max-width: 600px;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--color-bg-dark);
+  background-color: var(--color-accent);
+  padding: 16px 40px;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.ctaButton:hover {
+  background-color: #4b7a7c;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 140px 0 60px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    padding: 40px 24px;
+  }
+}
