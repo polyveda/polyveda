@@ -52,7 +52,8 @@ export default function ProductsPage() {
 
       {/* ── Products Grid ── */}
       <section className={styles.productsSection}>
-        <div className={styles.container}>
+        <div className={styles.gridBackground} />
+        <div className={styles.gridContainer}>
           <div className={styles.productsGrid}>
             {productsData.map((p, i) => (
               <Reveal key={p.id}>
