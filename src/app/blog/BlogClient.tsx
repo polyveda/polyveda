@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { CldImage } from 'next-cloudinary';
 import styles from './page.module.css';
 
 const CATEGORIES = ['All', 'Sustainability', 'Engineering', 'Logistics'];
@@ -59,13 +60,27 @@ export default function BlogPage({ posts }: { posts: any[] }) {
         <section className={styles.featuredSection}>
           <div className={styles.container}>
             <Link href={`/blog/${featured.slug}`} className={styles.featuredCard}>
-              <span className={styles.featuredEyebrow}>{featured.category}</span>
-              <h2 className={styles.featuredTitle}>{featured.title}</h2>
-              <p className={styles.featuredExcerpt}>{featured.excerpt}</p>
-              <div className={styles.readMore}>
-                <span>Read article</span>
-                <ArrowRight size={16} />
+              <div className={styles.featuredContent}>
+                <span className={styles.featuredEyebrow}>{featured.category}</span>
+                <h2 className={styles.featuredTitle}>{featured.title}</h2>
+                <p className={styles.featuredExcerpt}>{featured.excerpt}</p>
+                <div className={styles.readMore}>
+                  <span>Read article</span>
+                  <ArrowRight size={16} />
+                </div>
               </div>
+              {featured.coverImage && (
+                <div className={styles.featuredImage}>
+                  <CldImage 
+                    src={featured.coverImage} 
+                    alt={featured.title} 
+                    width={800} 
+                    height={500} 
+                    crop="fill"
+                    style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '4px' }}
+                  />
+                </div>
+              )}
             </Link>
           </div>
         </section>
@@ -91,7 +106,19 @@ export default function BlogPage({ posts }: { posts: any[] }) {
             {rest.map((post, i) => (
               <motion.div key={post.slug} variants={fadeUp} custom={i}>
                 <Link href={`/blog/${post.slug}`} className={styles.card}>
-                  <article>
+                  {post.coverImage && (
+                    <div className={styles.cardImage}>
+                      <CldImage 
+                        src={post.coverImage} 
+                        alt={post.title} 
+                        width={500} 
+                        height={350} 
+                        crop="fill"
+                        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                      />
+                    </div>
+                  )}
+                  <article className={styles.cardContent}>
                     <div className={styles.meta}>
                       <span className={styles.category}>{post.category}</span>
                       <span className={styles.date}>{new Date(post.createdAt).toLocaleDateString()}</span>

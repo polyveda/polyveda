@@ -24,11 +24,14 @@
 /* ── Featured post ── */
 .featuredSection { padding: clamp(48px, 7vw, 88px) 0 0; }
 .featuredCard {
-  display: block; text-decoration: none; background: var(--color-bg-dark);
+  display: flex; gap: 40px; text-decoration: none; background: var(--color-bg-dark);
   padding: clamp(32px, 5vw, 64px); border-radius: 4px;
   border: 1px solid rgba(95,149,152,0.2);
   transition: border-color 300ms ease, transform 300ms ease;
+  align-items: center;
 }
+.featuredContent { flex: 1; }
+.featuredImage { flex: 1; width: 100%; border-radius: 4px; overflow: hidden; aspect-ratio: 16/10; }
 .featuredCard:hover { border-color: var(--color-accent); transform: translateY(-3px); }
 .featuredEyebrow {
   display: block; font-family: var(--font-base); font-size: 11px; font-weight: 700;
@@ -60,9 +63,11 @@
 }
 
 /* Post grid */
-.grid { display: grid; grid-template-columns: 1fr; background: rgba(11,18,21,0.08); border-top: 1.5px solid var(--color-bg-dark); gap: 2px; }
-.card { display: block; text-decoration: none; color: inherit; background: var(--color-bg-light); padding: clamp(32px, 4vw, 52px) 0; transition: background 250ms ease; }
-.card:hover { background: #F0F0EE; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; padding-top: 24px; }
+.card { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--color-bg-light); border: 1px solid rgba(11,18,21,0.1); border-radius: 4px; overflow: hidden; transition: transform 250ms ease, box-shadow 250ms ease; height: 100%; }
+.cardImage { width: 100%; aspect-ratio: 16/10; overflow: hidden; }
+.cardContent { padding: 32px; display: flex; flex-direction: column; flex: 1; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); border-color: var(--color-accent); }
 .meta { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
 .category {
   font-family: var(--font-base); font-size: 11px; font-weight: 600;
@@ -81,6 +86,11 @@
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-base); font-size: 13px; font-weight: 600;
   color: var(--color-text-dark); text-transform: uppercase; letter-spacing: 0.1em;
-  transition: color 200ms ease, transform 200ms ease;
+  transition: color 200ms ease, transform 200ms ease; margin-top: auto;
 }
 .card:hover .readMore { color: var(--color-accent); transform: translateX(6px); }
+
+@media (max-width: 768px) {
+  .featuredCard { flex-direction: column-reverse; padding: 24px; }
+  .featuredImage { aspect-ratio: 16/9; }
+}

@@ -6,6 +6,7 @@ export interface IPost extends mongoose.Document {
   category: string;
   excerpt: string;
   content: string; // HTML content from WYSIWYG
+  coverImage?: string; // Cloudinary URL or public ID
   metaTitle: string;
   metaDescription: string;
   published: boolean;
@@ -37,6 +38,10 @@ const PostSchema = new mongoose.Schema(
     content: {
       type: String,
       required: [true, 'Please provide content'],
+    },
+    coverImage: {
+      type: String,
+      default: '',
     },
     metaTitle: {
       type: String,

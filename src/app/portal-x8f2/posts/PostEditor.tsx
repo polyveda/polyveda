@@ -19,6 +19,7 @@ export default function PostEditor({ postId }: { postId?: string }) {
     category: 'Sustainability',
     excerpt: '',
     content: '',
+    coverImage: '',
     metaTitle: '',
     metaDescription: '',
     published: false,
@@ -70,6 +71,27 @@ export default function PostEditor({ postId }: { postId?: string }) {
         alert('Image upload failed');
       }
     };
+  };
+
+  const handleCoverUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files ? e.target.files[0] : null;
+    if (!file) return;
+
+    const fd = new FormData();
+    fd.append('image', file);
+    try {
+      const res = await fetch('/api/portal-x8f2/upload', {
+        method: 'POST',
+        body: fd,
+      });
+      const data = await res.json();
+      if (data.url) {
+        setFormData(prev => ({ ...prev, coverImage: data.url }));
+      }
+    } catch (err) {
+      console.error('Cover upload failed', err);
+      alert('Cover upload failed');
+    }
   };
 
   const modules = useMemo(() => ({
@@ -156,6 +178,16 @@ export default function PostEditor({ postId }: { postId?: string }) {
         <div className={styles.formGroup}>
           <label>Excerpt <span className={styles.hint}>(A short 1-2 sentence summary shown on the blog list page)</span></label>
           <textarea name="excerpt" value={formData.excerpt} onChange={handleChange} required placeholder="e.g., Discover how switching to PP corrugated can cut logistics costs by 40%." />
+        </div>
+
+        <div className={styles.formGroup}>
+          <label>Cover Image <span className={styles.hint}>(Displays on the blog list and top of the article)</span></label>
+          <input type="file" accept="image/*" onChange={handleCoverUpload} />
+          {formData.coverImage && (
+            <div style={{ marginTop: '12px' }}>
+              <img src={formData.coverImage} alt="Cover preview" style={{ maxWidth: '300px', borderRadius: '4px' }} />
+            </div>
+          )}
         </div>
 
         <div className={styles.formGroup}>

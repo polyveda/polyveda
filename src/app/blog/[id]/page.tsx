@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { CldImage } from 'next-cloudinary';
 import styles from './Article.module.css';
 import dbConnect from '@/lib/mongoose';
 import { Post } from '@/models/Post';
@@ -88,6 +89,25 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           <h1 className={styles.articleTitle}>{post.title}</h1>
         </div>
       </header>
+
+      {/* Cover Image Banner */}
+      {post.coverImage && (
+        <div className={styles.coverImageContainer}>
+          <div className={styles.container}>
+            <div className={styles.coverImageWrapper}>
+              <CldImage
+                src={post.coverImage}
+                alt={post.title}
+                width={1200}
+                height={600}
+                crop="fill"
+                sizes="(max-width: 768px) 100vw, 1200px"
+                style={{ width: '100%', height: 'auto', borderRadius: '4px', display: 'block' }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Article Body */}
       <article className={styles.articleBody}>
