@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePreloader } from '@/context/PreloaderContext';
+import { usePathname } from 'next/navigation';
 import styles from './Preloader.module.css';
 
 const LOGO_URL =
@@ -14,35 +15,32 @@ const LOGO_URL =
 type Phase = 'logo' | 'fly' | 'done';
 
 export function Preloader() {
-  const { setPreloaderDone } = usePreloader();
+  const { setPreloaderDone, loadProgress } = usePreloader();
   const [phase, setPhase] = useState<Phase>('logo');
+  const pathname = usePathname();
 
   useEffect(() => {
-    let isMounted = true;
-    
-    const runSequence = async () => {
-      // Step 1: Wait for logo to bloom in + dramatic hold
-      await new Promise(r => setTimeout(r, 1400));
-      if (!isMounted) return;
-      
-      // Step 2: overlay exit starts — logo "belongs" to nav now
-      setPreloaderDone(true); // Tell navbar to mount its logo NOW
-      setPhase('fly');
-      
-      // Wait for fade-out transition to finish
-      await new Promise(r => setTimeout(r, 900));
-      if (!isMounted) return;
-      
-      // Step 3: signal rest of app, then unmount
-      setPhase('done');
-    };
+    // If not on the homepage, just finish quickly
+    if (pathname !== '/') {
+      const timer = setTimeout(() => {
+        setPreloaderDone(true);
+        setPhase('fly');
+        setTimeout(() => setPhase('done'), 900);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
 
-    runSequence();
-    
-    return () => {
-      isMounted = false;
-    };
-  }, [setPreloaderDone]);
+    // On homepage, wait for loadProgress to hit 100%
+    if (loadProgress >= 100 && phase === 'logo') {
+      // Add a slight dramatic pause after hitting 100% before flying
+      const timer = setTimeout(() => {
+        setPreloaderDone(true);
+        setPhase('fly');
+        setTimeout(() => setPhase('done'), 900);
+      }, 800);
+      return () => clearTimeout(timer);
+    }
+  }, [loadProgress, phase, pathname, setPreloaderDone]);
 
   if (phase === 'done') return null;
 
@@ -84,6 +82,19 @@ export function Preloader() {
               exit={{ opacity: 0, transition: { duration: 0.3 } }}
             >
               INITIALIZING...
+            </motion.div>
+            
+            <motion.div 
+              className={styles.progressContainer}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <div 
+                className={styles.progressFill} 
+                style={{ width: `${pathname === '/' ? loadProgress : 100}%` }} 
+              />
             </motion.div>
           </>
         )}

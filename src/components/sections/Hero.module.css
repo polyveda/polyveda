@@ -10,7 +10,7 @@
 .stickyWrapper {
   position: sticky;
   top: 0;
-  height: 100svh;
+  height: 100vh;
   width: 100%;
   overflow: hidden;
 }
@@ -206,7 +206,7 @@
   }
 
   .bottomAnchor {
-    bottom: 24px;
+    bottom: 80px;
     left: 20px;
   }
 

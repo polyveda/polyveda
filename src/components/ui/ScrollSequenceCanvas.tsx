@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState, useLayoutEffect } from 'react';
 import { useMotionValueEvent, MotionValue } from 'framer-motion';
+import { usePreloader } from '@/context/PreloaderContext';
 
 interface ScrollSequenceCanvasProps {
   frameCount: number;
@@ -14,6 +15,7 @@ export function ScrollSequenceCanvas({ frameCount, progress, imagePathPrefix = '
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
   const [loaded, setLoaded] = useState(0);
+  const { setLoadProgress } = usePreloader();
 
   // Preload all frames
   useEffect(() => {
@@ -28,6 +30,7 @@ export function ScrollSequenceCanvas({ frameCount, progress, imagePathPrefix = '
       img.onload = () => {
         loadedCount++;
         setLoaded(loadedCount);
+        setLoadProgress(Math.floor((loadedCount / frameCount) * 100));
         // Draw the first frame as soon as it's loaded
         if (i === 1 && contextRef.current && canvasRef.current) {
           drawFrame(img);
@@ -120,17 +123,6 @@ export function ScrollSequenceCanvas({ frameCount, progress, imagePathPrefix = '
         ref={canvasRef}
         style={{ width: '100%', height: '100%', display: 'block' }}
       />
-      {/* Loading overlay if we haven't loaded the first 10 frames */}
-      {loaded < Math.min(10, frameCount) && (
-        <div style={{ 
-          position: 'absolute', inset: 0, display: 'flex', 
-          alignItems: 'center', justifyContent: 'center', 
-          background: 'var(--color-bg-dark)', color: 'rgba(255,255,255,0.2)', 
-          zIndex: 10, fontSize: '14px', letterSpacing: '2px' 
-        }}>
-          LOADING HERO SEQUENCE
-        </div>
-      )}
     </>
   );
 }
