@@ -95,15 +95,19 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
         <div className={styles.coverImageContainer}>
           <div className={styles.container}>
             <div className={styles.coverImageWrapper}>
-              <CldImage
-                src={post.coverImage}
-                alt={post.title}
-                width={1200}
-                height={600}
-                crop="fill"
-                sizes="(max-width: 768px) 100vw, 1200px"
-                style={{ width: '100%', height: 'auto', borderRadius: '4px', display: 'block' }}
-              />
+              {post.coverImage.startsWith('http') ? (
+                <img src={post.coverImage} alt={post.title} style={{ width: '100%', height: 'auto', borderRadius: '4px', display: 'block' }} />
+              ) : (
+                <CldImage
+                  src={post.coverImage}
+                  alt={post.title}
+                  width={1200}
+                  height={600}
+                  crop="fill"
+                  sizes="(max-width: 768px) 100vw, 1200px"
+                  style={{ width: '100%', height: 'auto', borderRadius: '4px', display: 'block' }}
+                />
+              )}
             </div>
           </div>
         </div>

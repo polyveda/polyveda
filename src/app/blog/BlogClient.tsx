@@ -71,14 +71,18 @@ export default function BlogPage({ posts }: { posts: any[] }) {
               </div>
               {featured.coverImage && (
                 <div className={styles.featuredImage}>
-                  <CldImage 
-                    src={featured.coverImage} 
-                    alt={featured.title} 
-                    width={800} 
-                    height={500} 
-                    crop="fill"
-                    style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '4px' }}
-                  />
+                  {featured.coverImage.startsWith('http') ? (
+                    <img src={featured.coverImage} alt={featured.title} style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '4px' }} />
+                  ) : (
+                    <CldImage 
+                      src={featured.coverImage} 
+                      alt={featured.title} 
+                      width={800} 
+                      height={500} 
+                      crop="fill"
+                      style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '4px' }}
+                    />
+                  )}
                 </div>
               )}
             </Link>
@@ -108,14 +112,18 @@ export default function BlogPage({ posts }: { posts: any[] }) {
                 <Link href={`/blog/${post.slug}`} className={styles.card}>
                   {post.coverImage && (
                     <div className={styles.cardImage}>
-                      <CldImage 
-                        src={post.coverImage} 
-                        alt={post.title} 
-                        width={500} 
-                        height={350} 
-                        crop="fill"
-                        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                      />
+                      {post.coverImage.startsWith('http') ? (
+                        <img src={post.coverImage} alt={post.title} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                      ) : (
+                        <CldImage 
+                          src={post.coverImage} 
+                          alt={post.title} 
+                          width={500} 
+                          height={350} 
+                          crop="fill"
+                          style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                        />
+                      )}
                     </div>
                   )}
                   <article className={styles.cardContent}>

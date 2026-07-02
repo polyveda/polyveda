@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import { CldImage } from 'next-cloudinary';
 import styles from './Posts.module.css';
 import 'react-quill-new/dist/quill.snow.css';
 
@@ -85,8 +86,8 @@ export default function PostEditor({ postId }: { postId?: string }) {
         body: fd,
       });
       const data = await res.json();
-      if (data.url) {
-        setFormData(prev => ({ ...prev, coverImage: data.url }));
+      if (data.public_id) {
+        setFormData(prev => ({ ...prev, coverImage: data.public_id }));
       }
     } catch (err) {
       console.error('Cover upload failed', err);
@@ -185,7 +186,11 @@ export default function PostEditor({ postId }: { postId?: string }) {
           <input type="file" accept="image/*" onChange={handleCoverUpload} />
           {formData.coverImage && (
             <div style={{ marginTop: '12px' }}>
-              <img src={formData.coverImage} alt="Cover preview" style={{ maxWidth: '300px', borderRadius: '4px' }} />
+              {formData.coverImage.startsWith('http') ? (
+                <img src={formData.coverImage} alt="Cover preview" style={{ maxWidth: '300px', borderRadius: '4px' }} />
+              ) : (
+                <CldImage src={formData.coverImage} alt="Cover preview" width={300} height={200} crop="fill" style={{ maxWidth: '300px', borderRadius: '4px' }} />
+              )}
             </div>
           )}
         </div>
