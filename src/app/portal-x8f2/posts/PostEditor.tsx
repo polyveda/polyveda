@@ -7,7 +7,7 @@ import styles from './Posts.module.css';
 import 'react-quill-new/dist/quill.snow.css';
 
 // ReactQuill must be loaded dynamically since it requires the document object
-const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false }) as any;
 
 export default function PostEditor({ postId }: { postId?: string }) {
   const router = useRouter();
