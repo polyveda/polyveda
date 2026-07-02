@@ -3,7 +3,7 @@
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background: #000;
+  background: radial-gradient(circle at center, #051a24 0%, #000000 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,4 +41,14 @@
   filter: brightness(1) drop-shadow(0 0 40px rgba(255,255,255,0.15));
   pointer-events: none;
   user-select: none;
+}
+
+.loadingText {
+  position: absolute;
+  bottom: 20%;
+  font-family: var(--font-base);
+  font-size: 11px;
+  letter-spacing: 6px;
+  color: var(--color-accent);
+  text-transform: uppercase;
 }

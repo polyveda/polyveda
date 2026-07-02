@@ -56,25 +56,36 @@ export function Preloader() {
       {/* ── Logo: center reveal → unmounts during 'fly' so Navbar can take over ── */}
       <AnimatePresence>
         {phase === 'logo' && (
-          <div className={styles.logoCenter}>
-            <motion.img
-              layoutId="site-logo"
-              src={LOGO_URL}
-              alt="Polyveda logo"
-              className={styles.logoImg}
-              draggable={false}
-              initial={{ opacity: 0, scale: 0.55, filter: 'blur(24px)' }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                filter: 'blur(0px)',
-              }}
-              transition={{
-                duration: 1.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-            />
-          </div>
+          <>
+            <div className={styles.logoCenter}>
+              <motion.img
+                layoutId="site-logo"
+                src={LOGO_URL}
+                alt="Polyveda logo"
+                className={styles.logoImg}
+                draggable={false}
+                initial={{ opacity: 0, scale: 0.55, filter: 'blur(24px)' }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  filter: 'blur(0px)',
+                }}
+                transition={{
+                  duration: 1.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              />
+            </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0.2, 1, 0.2] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+              className={styles.loadingText}
+              exit={{ opacity: 0, transition: { duration: 0.3 } }}
+            >
+              INITIALIZING...
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.div>

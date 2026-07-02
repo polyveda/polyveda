@@ -10,7 +10,7 @@
 .stickyWrapper {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: 100svh;
   width: 100%;
   overflow: hidden;
 }
@@ -200,8 +200,9 @@
 
   /* Push text down to give logo more breathing room */
   .centerOverlay {
-    justify-content: flex-start;
-    padding-top: 30vh;
+    justify-content: center;
+    padding-top: 0;
+    margin-top: -10vh;
   }
 
   .bottomAnchor {
