@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import { CldImage } from 'next-cloudinary';
 import styles from './Posts.module.css';
 import 'react-quill-new/dist/quill.snow.css';
 
@@ -27,6 +26,7 @@ export default function PostEditor({ postId }: { postId?: string }) {
   });
   const [loading, setLoading] = useState(postId ? true : false);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -88,6 +88,7 @@ export default function PostEditor({ postId }: { postId?: string }) {
     const file = e.target.files ? e.target.files[0] : null;
     if (!file) return;
 
+    setUploading(true);
     const fd = new FormData();
     fd.append('image', file);
     try {
@@ -96,12 +97,17 @@ export default function PostEditor({ postId }: { postId?: string }) {
         body: fd,
       });
       const data = await res.json();
-      if (data.public_id) {
-        setFormData(prev => ({ ...prev, coverImage: data.public_id }));
+      if (data.url) {
+        // Save the full optimized URL (already has f_auto,q_auto injected server-side)
+        setFormData(prev => ({ ...prev, coverImage: data.url }));
+      } else {
+        alert('Upload failed: ' + (data.error || 'Unknown error'));
       }
     } catch (err) {
       console.error('Cover upload failed', err);
-      alert('Cover upload failed');
+      alert('Cover upload failed — check that CLOUDINARY_URL is set in Vercel environment variables.');
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -193,14 +199,12 @@ export default function PostEditor({ postId }: { postId?: string }) {
 
         <div className={styles.formGroup}>
           <label>Cover Image <span className={styles.hint}>(Displays on the blog list and top of the article)</span></label>
-          <input type="file" accept="image/*" onChange={handleCoverUpload} />
-          {formData.coverImage && (
+          <input type="file" accept="image/*" onChange={handleCoverUpload} disabled={uploading} />
+          {uploading && <p style={{ marginTop: '8px', color: 'var(--color-accent)', fontSize: '13px' }}>⏳ Uploading to Cloudinary...</p>}
+          {formData.coverImage && !uploading && (
             <div style={{ marginTop: '12px' }}>
-              {formData.coverImage.startsWith('http') ? (
-                <img src={formData.coverImage} alt="Cover preview" style={{ maxWidth: '300px', borderRadius: '4px' }} />
-              ) : (
-                <CldImage src={formData.coverImage} alt="Cover preview" width={300} height={200} crop="fill" style={{ maxWidth: '300px', borderRadius: '4px' }} />
-              )}
+              <img src={formData.coverImage} alt="Cover preview" style={{ maxWidth: '300px', borderRadius: '4px', display: 'block' }} />
+              <p style={{ fontSize: '12px', color: 'rgba(0,0,0,0.4)', marginTop: '4px' }}>✓ Cover image uploaded</p>
             </div>
           )}
         </div>

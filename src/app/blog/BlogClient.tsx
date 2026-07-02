@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { CldImage } from 'next-cloudinary';
 import styles from './page.module.css';
 
 const CATEGORIES = ['All', 'Sustainability', 'Engineering', 'Logistics'];
@@ -22,7 +21,7 @@ export default function BlogPage({ posts }: { posts: any[] }) {
     : posts.filter(p => p.category === activeCategory);
 
   const featured = posts.length > 0 ? posts[0] : null;
-  const rest = featured ? filtered.filter(p => p.slug !== featured.slug) : [];
+  const rest = featured ? filtered.filter(p => p.slug !== featured.slug) : filtered;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -40,7 +39,7 @@ export default function BlogPage({ posts }: { posts: any[] }) {
         <div className={styles.headerInner}>
           <motion.span className={styles.eyebrow}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}>
-            Insights & Engineering
+            Insights &amp; Engineering
           </motion.span>
           <motion.h1 className={styles.title}
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
@@ -71,18 +70,11 @@ export default function BlogPage({ posts }: { posts: any[] }) {
               </div>
               {featured.coverImage && (
                 <div className={styles.featuredImage}>
-                  {featured.coverImage.startsWith('http') ? (
-                    <img src={featured.coverImage} alt={featured.title} style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '4px' }} />
-                  ) : (
-                    <CldImage 
-                      src={featured.coverImage} 
-                      alt={featured.title} 
-                      width={800} 
-                      height={500} 
-                      crop="fill"
-                      style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '4px' }}
-                    />
-                  )}
+                  <img
+                    src={featured.coverImage}
+                    alt={featured.title}
+                    style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '4px' }}
+                  />
                 </div>
               )}
             </Link>
@@ -90,7 +82,7 @@ export default function BlogPage({ posts }: { posts: any[] }) {
         </section>
       )}
 
-      {/* ── Category filter ── */}
+      {/* ── Category filter + grid ── */}
       <section className={styles.listSection}>
         <div className={styles.container}>
           <div className={styles.filterRow}>
@@ -112,18 +104,11 @@ export default function BlogPage({ posts }: { posts: any[] }) {
                 <Link href={`/blog/${post.slug}`} className={styles.card}>
                   {post.coverImage && (
                     <div className={styles.cardImage}>
-                      {post.coverImage.startsWith('http') ? (
-                        <img src={post.coverImage} alt={post.title} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-                      ) : (
-                        <CldImage 
-                          src={post.coverImage} 
-                          alt={post.title} 
-                          width={500} 
-                          height={350} 
-                          crop="fill"
-                          style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                        />
-                      )}
+                      <img
+                        src={post.coverImage}
+                        alt={post.title}
+                        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                      />
                     </div>
                   )}
                   <article className={styles.cardContent}>
