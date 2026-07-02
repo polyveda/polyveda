@@ -35,7 +35,17 @@ export default function PostEditor({ postId }: { postId?: string }) {
         .then((res) => res.json())
         .then((data) => {
           if (data.error) setError(data.error);
-          else setFormData(data);
+          else setFormData({
+            title: data.title || '',
+            slug: data.slug || '',
+            category: data.category || 'Sustainability',
+            excerpt: data.excerpt || '',
+            content: data.content || '',
+            coverImage: data.coverImage || '',
+            metaTitle: data.metaTitle || '',
+            metaDescription: data.metaDescription || '',
+            published: data.published || false,
+          });
           setLoading(false);
         });
     }
