@@ -104,14 +104,14 @@ const products = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: any = {
   hidden: {},
   visible: {
     transition: { staggerChildren: 0.1 }
   }
 };
 
-const cardVariants = {
+const cardVariants: any = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1, y: 0,
