@@ -1,0 +1,188 @@
+.section {
+  height: 250vh;
+  background-color: var(--color-bg-light);
+  position: relative;
+  z-index: 1;
+}
+
+/* Technical Blueprint Grid */
+.gridBackground {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(29, 84, 109, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 84, 109, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ambient Spotlight */
+.ambientSpotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(95, 149, 152, 0.08) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* HUD Reticles */
+.reticleTopLeft, .reticleTopRight, .reticleBottomLeft, .reticleBottomRight {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.reticleTopLeft {
+  top: 40px; left: 40px;
+  border-top: 2px solid rgba(6, 30, 41, 0.2);
+  border-left: 2px solid rgba(6, 30, 41, 0.2);
+}
+
+.reticleTopRight {
+  top: 40px; right: 40px;
+  border-top: 2px solid rgba(6, 30, 41, 0.2);
+  border-right: 2px solid rgba(6, 30, 41, 0.2);
+}
+
+.reticleBottomLeft {
+  bottom: 40px; left: 40px;
+  border-bottom: 2px solid rgba(6, 30, 41, 0.2);
+  border-left: 2px solid rgba(6, 30, 41, 0.2);
+}
+
+.reticleBottomRight {
+  bottom: 40px; right: 40px;
+  border-bottom: 2px solid rgba(6, 30, 41, 0.2);
+  border-right: 2px solid rgba(6, 30, 41, 0.2);
+}
+
+.stickyContainer {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+  position: relative;
+}
+
+.heading {
+  display: flex;
+  align-items: flex-start;
+  font-size: clamp(48px, 8vw, 120px);
+  font-family: var(--font-heading);
+  letter-spacing: -2px;
+  line-height: 1;
+  color: var(--color-bg-dark);
+  margin: 0;
+}
+
+.prefix {
+  margin-right: 0.3em;
+  white-space: nowrap;
+}
+
+.wordWindow {
+  height: 1.1em;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.wordList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  will-change: transform;
+}
+
+.wordItem {
+  height: 1.1em;
+  color: var(--color-accent);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.microCopyContainer {
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.microCopy {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--color-bg-dark);
+  padding: 12px 20px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(6, 30, 41, 0.1);
+  max-width: min(600px, 90vw);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.specLabel {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  padding-right: 16px;
+}
+
+.microCopy p {
+  margin: 0;
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--color-text-light);
+  letter-spacing: 0.3px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    flex-direction: column;
+    align-items: center;
+    letter-spacing: -1px;
+  }
+  .prefix {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+  .microCopy {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+    gap: 8px;
+  }
+  .specLabel {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-right: 0;
+    padding-bottom: 8px;
+  }
+}

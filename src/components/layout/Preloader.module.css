@@ -1,0 +1,44 @@
+/* Full-screen backdrop */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Video fills the screen, cover-cropped */
+.videoWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Center-stage logo container */
+.logoCenter {
+  position: absolute;
+  /* Framer Motion layoutId drives it from here → nav position */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImg {
+  width: clamp(120px, 20vw, 240px);
+  height: auto;
+  object-fit: contain;
+  /* Ensure transparency shows correctly on black */
+  mix-blend-mode: normal;
+  filter: brightness(1) drop-shadow(0 0 40px rgba(255,255,255,0.15));
+  pointer-events: none;
+  user-select: none;
+}

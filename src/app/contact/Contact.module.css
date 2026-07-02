@@ -1,0 +1,115 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--spacing-12) var(--spacing-3);
+  min-height: 80vh;
+}
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--spacing-12);
+}
+.info h1 {
+  font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: -1.5px;
+  margin-bottom: var(--spacing-4);
+  line-height: 1.1;
+}
+.info p {
+  font-size: 18px;
+  color: var(--color-text-muted-dark);
+  margin-bottom: var(--spacing-8);
+  max-width: 500px;
+  line-height: 1.6;
+}
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+.contactDetails div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+.contactDetails strong {
+  font-size: 14px;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.contactDetails span {
+  font-size: 16px;
+  color: var(--color-text-dark);
+}
+.formWrapper {
+  background-color: var(--color-surface-light);
+  padding: var(--spacing-8);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(11, 18, 21, 0.08);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4);
+}
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+.label {
+  font-family: var(--font-base);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-text-dark);
+}
+.select, .textarea {
+  background-color: var(--color-bg-light);
+  border: 1px solid rgba(11, 18, 21, 0.15);
+  padding: var(--spacing-2);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-text-dark);
+  font-family: var(--font-base);
+  font-size: 16px;
+  transition: border-color 150ms ease-in-out;
+  width: 100%;
+}
+.select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+.submitBtn {
+  margin-top: var(--spacing-2);
+}
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 400px;
+  gap: var(--spacing-4);
+}
+.successState h2 {
+  color: var(--color-accent);
+}
+.successState p {
+  color: var(--color-text-muted-dark);
+  max-width: 400px;
+}
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+}

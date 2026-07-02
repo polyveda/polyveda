@@ -1,0 +1,221 @@
+/* ── Outer scroll container ── */
+.heroSequenceContainer {
+  height: 400vh;
+  width: 100%;
+  position: relative;
+  background-color: #000;
+}
+
+/* ── Sticky viewport frame ── */
+.stickyWrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ── Canvas fills entire sticky frame ── */
+.canvasContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────────
+   CENTER INTRO OVERLAY — fades out on scroll
+───────────────────────────────────────────── */
+.centerOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  gap: 0;
+}
+
+/* Decorative top line */
+.hudLineTop {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.35));
+  margin-bottom: 24px;
+}
+
+.centerTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 6vw, 90px);
+  letter-spacing: -2px;
+  line-height: 1.0;
+  color: #fff;
+  text-align: center;
+  /* Extremely strong shadow for legibility */
+  text-shadow: 0 4px 40px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.5);
+  margin: 0;
+  padding: 0 24px;
+}
+
+.centerTitleAccent {
+  color: var(--color-accent);
+  display: block;
+}
+
+/* Small eyebrow label above title */
+.centerEyebrow {
+  font-family: var(--font-base);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  margin-bottom: 20px;
+}
+
+/* Decorative bottom line + tag */
+.hudLineBottom {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to top, transparent, rgba(255,255,255,0.35));
+  margin-top: 24px;
+}
+
+/* Corner HUD reticles */
+.reticle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.reticle::before,
+.reticle::after {
+  content: '';
+  position: absolute;
+  background: rgba(255,255,255,0.5);
+}
+
+.reticle::before { width: 100%; height: 1px; top: 0; left: 0; }
+.reticle::after  { width: 1px; height: 100%; top: 0; left: 0; }
+
+.reticleTL { top: 32px; left: 32px; }
+.reticleTR { top: 32px; right: 32px; transform: scaleX(-1); }
+.reticleBL { bottom: 32px; left: 32px; transform: scaleY(-1); }
+.reticleBR { bottom: 32px; right: 32px; transform: scale(-1,-1); }
+
+/* Frame counter HUD */
+.frameLabel {
+  position: absolute;
+  bottom: 36px;
+  right: 40px;
+  font-family: var(--font-base);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ─────────────────────────────────────────────
+   BOTTOM-LEFT ANCHOR — always visible
+───────────────────────────────────────────── */
+.bottomAnchor {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.anchorLabel {
+  display: block;
+  font-family: var(--font-base);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 6px;
+}
+
+.anchorTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2.5vw, 32px);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+  margin: 0;
+}
+
+.anchorAccent {
+  color: var(--color-accent);
+}
+
+/* ─────────────────────────────────────────────
+   POST-HERO CTA STRIP (outside sticky)
+───────────────────────────────────────────── */
+.heroCtaStrip {
+  background: var(--color-bg-dark);
+  padding: 56px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.heroCtaCopy h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 3vw, 38px);
+  color: var(--color-text-light);
+  margin: 0 0 8px;
+  letter-spacing: -0.5px;
+}
+
+.heroCtaCopy p {
+  font-family: var(--font-base);
+  font-size: 15px;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+  max-width: 480px;
+}
+
+.heroCtaButtons {
+  display: flex;
+  gap: 16px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .reticleTL, .reticleTR, .reticleBL, .reticleBR { display: none; }
+  
+  /* Hide scroll label so it doesn't overlap bottom anchor text */
+  .frameLabel { display: none; }
+
+  /* Push text down to give logo more breathing room */
+  .centerOverlay {
+    justify-content: flex-start;
+    padding-top: 30vh;
+  }
+
+  .bottomAnchor {
+    bottom: 24px;
+    left: 20px;
+  }
+
+  .heroCtaStrip {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
+
+  .centerTitle {
+    letter-spacing: -1px;
+  }
+}

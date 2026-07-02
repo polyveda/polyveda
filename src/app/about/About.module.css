@@ -1,0 +1,161 @@
+/* ── Shared page shell ── */
+.page { background: var(--color-bg-light); }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px); }
+
+/* ── Hero ── */
+.hero {
+  background: var(--color-bg-dark);
+  padding: clamp(120px, 14vw, 200px) 0 clamp(60px, 8vw, 100px);
+}
+.eyebrow {
+  display: block; font-family: var(--font-base); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 20px;
+}
+.heroTitle {
+  font-family: var(--font-heading); font-size: clamp(40px, 6vw, 88px);
+  font-weight: 600; letter-spacing: -2px; line-height: 1.05; color: var(--color-bg-light);
+  margin: 0 0 24px;
+}
+.heroSub {
+  font-family: var(--font-base); font-size: clamp(15px, 1.5vw, 18px); line-height: 1.65;
+  color: var(--color-text-muted-light); max-width: 600px; margin: 0;
+}
+
+/* ── Mission ── */
+.missionSection { padding: clamp(64px, 9vw, 120px) 0; background: var(--color-bg-light); }
+.sectionEyebrow {
+  display: block; font-family: var(--font-base); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 16px;
+}
+.missionGrid { display: flex; flex-direction: column; gap: 40px; }
+.missionLeft { flex-shrink: 0; }
+.missionHeading {
+  font-family: var(--font-heading); font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 600; letter-spacing: -1px; line-height: 1.1; color: var(--color-text-dark); margin: 0;
+}
+.missionRight p {
+  font-family: var(--font-base); font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.7; color: var(--color-text-muted-dark); margin: 0 0 18px;
+}
+.missionRight p:last-child { margin-bottom: 0; }
+
+/* ── Stats ── */
+.statsSection { background: var(--color-bg-dark); padding: clamp(60px, 8vw, 100px) 0; }
+.statsGrid { display: grid; grid-template-columns: 1fr; gap: 48px; }
+
+/* ── PP cards ── */
+.ppSection { padding: clamp(64px, 9vw, 120px) 0; background: var(--color-bg-light); }
+.ppGrid { display: flex; flex-direction: column; gap: 48px; }
+.ppHeading {
+  font-family: var(--font-heading); font-size: clamp(26px, 3vw, 44px);
+  font-weight: 600; letter-spacing: -1px; line-height: 1.15; color: var(--color-text-dark); margin: 0 0 40px;
+}
+.ppCards { display: grid; grid-template-columns: 1fr; gap: 2px; background: rgba(11,18,21,0.08); border-top: 1.5px solid var(--color-bg-dark); }
+.ppCard { background: var(--color-bg-light); padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 48px); }
+.ppCardLabel {
+  display: block; font-family: var(--font-base); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 14px;
+}
+.ppCardBody { font-family: var(--font-base); font-size: clamp(14px, 1.4vw, 16px); line-height: 1.7; color: var(--color-text-muted-dark); margin: 0; }
+
+/* ── Sustainability ── */
+.sustainSection { background: var(--color-bg-dark); padding: clamp(64px, 9vw, 120px) 0; }
+.sectionEyebrowLight {
+  display: block; font-family: var(--font-base); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 24px;
+}
+.sustainInner { max-width: 760px; }
+.sustainStat {
+  display: block; font-family: var(--font-heading); font-size: clamp(32px, 5vw, 72px);
+  font-weight: 600; letter-spacing: -2px; line-height: 1.1; color: var(--color-bg-light);
+  margin-bottom: 32px;
+}
+.sustainBody {
+  font-family: var(--font-base); font-size: clamp(15px, 1.5vw, 18px); line-height: 1.65;
+  color: var(--color-text-muted-light); margin: 0;
+}
+
+/* ── CTA ── */
+.ctaSection { background: var(--color-bg-dark); padding: clamp(60px, 8vw, 100px) 0; border-top: 1px solid rgba(255,255,255,0.06); }
+.ctaInner { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.ctaHeading {
+  font-family: var(--font-heading); font-size: clamp(28px, 3.5vw, 52px);
+  font-weight: 600; letter-spacing: -1.5px; color: var(--color-bg-light); margin: 0;
+}
+.ctaSub { font-family: var(--font-base); font-size: clamp(15px, 1.5vw, 18px); color: var(--color-text-muted-light); margin: 0; }
+.ctaBtn {
+  display: inline-block; padding: 14px 32px; background: var(--color-accent); color: var(--color-bg-dark);
+  font-family: var(--font-base); font-size: 14px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; text-decoration: none; border-radius: 2px;
+  transition: background 250ms ease, transform 200ms ease;
+}
+.ctaBtn:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
+
+/* ── Responsive ── */
+@media (min-width: 768px) {
+  .missionGrid { flex-direction: row; gap: 80px; }
+  .missionLeft { width: 40%; }
+  .missionRight { flex: 1; }
+  .statsGrid { grid-template-columns: repeat(3, 1fr); }
+  .ppCards { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Internal Links Section ── */
+.internalLinksSection {
+  background: var(--color-bg-light);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: clamp(48px, 6vw, 80px) 0;
+}
+
+.internalLinksGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .internalLinksGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.internalLinkCard {
+  display: block;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.internalLinkCard:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 20px rgba(95,149,152,0.12);
+  transform: translateY(-2px);
+}
+
+.internalLinkLabel {
+  display: block;
+  font-family: var(--font-base);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+}
+
+.internalLinkCard h3 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin: 0 0 10px 0;
+}
+
+.internalLinkCard p {
+  font-family: var(--font-base);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted-dark);
+  margin: 0;
+}

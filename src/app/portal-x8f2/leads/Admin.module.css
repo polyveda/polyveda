@@ -1,0 +1,136 @@
+.adminContainer {
+  min-height: 100vh;
+  background-color: #030d12;
+  color: #fff;
+  padding: 120px 40px 60px;
+  font-family: var(--font-base);
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  margin: 0 0 8px 0;
+  color: var(--color-accent);
+}
+
+.header p {
+  color: #ff4757;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.table th {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table td {
+  padding: 16px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: top;
+}
+
+.table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.dateCell {
+  white-space: nowrap;
+}
+
+.time {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.companyCell {
+  font-weight: 600;
+}
+
+.table a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.table a:hover {
+  text-decoration: underline;
+}
+
+.badge, .sourceBadge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sourceBadge {
+  background: rgba(95, 149, 152, 0.2);
+  color: var(--color-accent);
+  border: 1px solid rgba(95, 149, 152, 0.4);
+}
+
+.detailsCell {
+  min-width: 350px;
+  max-width: 450px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.expandableDetails summary {
+  cursor: pointer;
+  color: var(--color-accent);
+  font-weight: 500;
+  outline: none;
+  user-select: none;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.expandableDetails summary:hover {
+  text-decoration: underline;
+}
+
+.detailsContent {
+  white-space: pre-wrap;
+  word-break: break-word; /* Prevents long continuous strings from overflowing */
+  overflow-wrap: break-word;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  border-left: 2px solid var(--color-accent);
+  margin-top: 8px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px;
+  color: rgba(255, 255, 255, 0.4);
+}

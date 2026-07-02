@@ -1,0 +1,270 @@
+.section {
+  background-color: var(--color-bg-dark);
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* Blueprint grid on dark background */
+.gridBackground {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--color-accent);
+  margin-bottom: 24px;
+}
+
+.labelLine {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-accent);
+  opacity: 0.5;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(42px, 6vw, 80px);
+  letter-spacing: -2px;
+  line-height: 1;
+  color: var(--color-text-light);
+  margin: 0 0 20px;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.subheading {
+  font-family: var(--font-base);
+  font-size: clamp(15px, 1.5vw, 18px);
+  color: var(--color-text-muted-light);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Cards Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 56px;
+}
+
+/* First two cards + last card can span differently for odd count */
+.grid > *:nth-child(4) {
+  border-bottom-left-radius: 8px;
+}
+.grid > *:last-child {
+  grid-column: span 2;
+}
+
+.card {
+  background-color: var(--color-bg-dark);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+  position: relative;
+}
+
+.card:hover {
+  background-color: rgba(29, 84, 109, 0.15);
+}
+
+/* ── Card Header ── */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardNumber {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.categoryPill {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  border: 1px solid rgba(95, 149, 152, 0.3);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+/* ── Icon ── */
+.iconWrapper {
+  color: rgba(95, 149, 152, 0.7);
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+.card:hover .iconWrapper {
+  color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+/* ── Body ── */
+.productName {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-light);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.tagline {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  color: var(--color-accent);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.description {
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--color-text-muted-light);
+  line-height: 1.65;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* ── Spec Tags ── */
+.specsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.specTag {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.45);
+  border-radius: 2px;
+}
+
+/* ── Footer ── */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footerLine {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.learnMore {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+  transition: color 200ms ease;
+  white-space: nowrap;
+}
+
+.card:hover .learnMore {
+  color: var(--color-accent);
+}
+
+/* ── CTA Row ── */
+.ctaRow {
+  display: flex;
+  justify-content: center;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--color-text-light);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 16px 32px;
+  border-radius: 4px;
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+
+.ctaButton:hover {
+  background-color: rgba(95, 149, 152, 0.1);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid > *:last-child {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 80px 0;
+  }
+  .container {
+    padding: 0 20px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    padding: 28px 24px;
+  }
+  .heading {
+    letter-spacing: -1px;
+  }
+}

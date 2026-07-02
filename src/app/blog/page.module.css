@@ -1,0 +1,86 @@
+/* ── Shell ── */
+.page { background: var(--color-bg-light); min-height: 100vh; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px); }
+
+/* ── Header ── */
+.header {
+  background: var(--color-bg-dark);
+  padding: clamp(120px, 14vw, 200px) 0 clamp(60px, 8vw, 100px);
+}
+.headerInner { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px); }
+.eyebrow {
+  display: block; font-family: var(--font-base); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 20px;
+}
+.title {
+  font-family: var(--font-heading); font-size: clamp(40px, 6vw, 88px);
+  font-weight: 600; letter-spacing: -2px; line-height: 1.05; color: var(--color-bg-light); margin: 0 0 24px;
+}
+.subtitle {
+  font-family: var(--font-base); font-size: clamp(15px, 1.5vw, 18px); line-height: 1.65;
+  color: var(--color-text-muted-light); max-width: 600px;
+}
+
+/* ── Featured post ── */
+.featuredSection { padding: clamp(48px, 7vw, 88px) 0 0; }
+.featuredCard {
+  display: block; text-decoration: none; background: var(--color-bg-dark);
+  padding: clamp(32px, 5vw, 64px); border-radius: 4px;
+  border: 1px solid rgba(95,149,152,0.2);
+  transition: border-color 300ms ease, transform 300ms ease;
+}
+.featuredCard:hover { border-color: var(--color-accent); transform: translateY(-3px); }
+.featuredEyebrow {
+  display: block; font-family: var(--font-base); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 20px;
+}
+.featuredTitle {
+  font-family: var(--font-heading); font-size: clamp(24px, 3.5vw, 48px);
+  font-weight: 600; letter-spacing: -1px; line-height: 1.12; color: var(--color-bg-light); margin: 0 0 20px;
+}
+.featuredExcerpt {
+  font-family: var(--font-base); font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.65; color: var(--color-text-muted-light); margin: 0 0 28px; max-width: 760px;
+}
+
+/* ── List section ── */
+.listSection { padding: clamp(48px, 6vw, 80px) 0 clamp(64px, 9vw, 120px); }
+
+/* Category filter */
+.filterRow { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px; }
+.filterBtn {
+  padding: 8px 20px; border: 1px solid rgba(11,18,21,0.2); border-radius: 2px; background: transparent;
+  font-family: var(--font-base); font-size: 13px; font-weight: 500; color: var(--color-text-muted-dark);
+  cursor: pointer; transition: all 250ms ease;
+}
+.filterBtn:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.filterActive {
+  background: var(--color-accent) !important; border-color: var(--color-accent) !important;
+  color: var(--color-bg-dark) !important; font-weight: 600;
+}
+
+/* Post grid */
+.grid { display: grid; grid-template-columns: 1fr; background: rgba(11,18,21,0.08); border-top: 1.5px solid var(--color-bg-dark); gap: 2px; }
+.card { display: block; text-decoration: none; color: inherit; background: var(--color-bg-light); padding: clamp(32px, 4vw, 52px) 0; transition: background 250ms ease; }
+.card:hover { background: #F0F0EE; }
+.meta { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.category {
+  font-family: var(--font-base); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent);
+}
+.date { font-family: var(--font-base); font-size: 14px; color: var(--color-text-muted-dark); }
+.postTitle {
+  font-family: var(--font-heading); font-size: clamp(20px, 2.8vw, 36px);
+  font-weight: 500; letter-spacing: -0.5px; color: var(--color-text-dark); margin: 0 0 14px;
+}
+.excerpt {
+  font-family: var(--font-base); font-size: clamp(14px, 1.4vw, 16px);
+  line-height: 1.65; color: var(--color-text-muted-dark); margin: 0 0 24px; max-width: 760px;
+}
+.readMore {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-base); font-size: 13px; font-weight: 600;
+  color: var(--color-text-dark); text-transform: uppercase; letter-spacing: 0.1em;
+  transition: color 200ms ease, transform 200ms ease;
+}
+.card:hover .readMore { color: var(--color-accent); transform: translateX(6px); }

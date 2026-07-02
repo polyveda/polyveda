@@ -1,0 +1,223 @@
+.widgetContainer {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: none; /* Let clicks pass through empty space */
+}
+
+.fabContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+/* ── FAB Button ── */
+.fab {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-bg-dark);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.fab:hover {
+  transform: scale(1.05);
+  background-color: #4b7a7c;
+}
+
+.fabWhatsapp {
+  background-color: #25D366;
+  color: white;
+}
+
+.fabWhatsapp:hover {
+  background-color: #128C7E;
+}
+
+/* ── Popup Card ── */
+.popupCard {
+  width: calc(100vw - 32px);
+  max-width: 420px;
+  background-color: rgba(6, 30, 41, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  pointer-events: auto;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.popupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.popupHeader h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--color-text-light);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted-light);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.closeBtn:hover {
+  color: var(--color-text-light);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Form Body ── */
+.formBody {
+  padding: 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.formBody::-webkit-scrollbar {
+  width: 6px;
+}
+.formBody::-webkit-scrollbar-track {
+  background: transparent;
+}
+.formBody::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: var(--font-base);
+  font-size: 13px;
+  color: var(--color-text-muted-light);
+  font-weight: 500;
+}
+
+.select, .textarea, .input {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: var(--color-text-light);
+  font-family: var(--font-base);
+  font-size: 14px;
+  padding: 10px 12px;
+  transition: border-color 200ms ease;
+  outline: none;
+}
+
+.select:focus, .textarea:focus, .input:focus {
+  border-color: var(--color-accent);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Dark mode select options */
+.select option {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+}
+
+.submitBtn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Success State ── */
+.successState {
+  padding: 40px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.successIcon {
+  color: var(--color-accent);
+  margin-bottom: 8px;
+}
+
+.successState h4 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.successState p {
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--color-text-muted-light);
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .widgetContainer {
+    bottom: 16px;
+    right: 16px;
+  }
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,290 @@
+.page {
+  min-height: 100vh;
+  background-color: var(--color-bg-dark);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Hero ── */
+.hero {
+  padding: 180px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroGridBackground {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--color-accent);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 8vw, 96px);
+  letter-spacing: -2px;
+  line-height: 1.05;
+  color: var(--color-text-light);
+  margin: 0 0 32px;
+}
+
+.heroSub {
+  font-family: var(--font-base);
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--color-text-muted-light);
+  max-width: 700px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Sticky Scroll Layout ── */
+.stickySection {
+  position: relative;
+  /* Ensure the container is tall enough to scroll through all items */
+  padding-bottom: 120px;
+}
+
+.stickyContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+
+/* Left: Sticky Image Area */
+.imageColumn {
+  width: 50%;
+  position: relative;
+}
+
+.imageSticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px 80px 80px;
+}
+
+.imageWrapper {
+  position: absolute;
+  width: calc(100% - 120px);
+  height: calc(100vh - 160px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  will-change: opacity, transform;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(6,30,41,0.2), rgba(6,30,41,0.6));
+  z-index: 2;
+  pointer-events: none;
+}
+
+.industryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+}
+
+/* Right: Scrolling Content Blocks */
+.contentColumn {
+  width: 50%;
+  padding: 0 80px 0 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each block takes up 100vh to map 1:1 with scroll progress */
+.contentBlock {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 80px 0;
+}
+
+.blockInner {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 48px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.blockHeader {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.blockIndex {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.blockTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.blockIcon {
+  color: var(--color-accent);
+}
+
+.blockTitle {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: var(--color-text-light);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.blockHeadline {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  color: var(--color-text-light);
+  margin: 0 0 24px;
+}
+
+.blockBody {
+  font-family: var(--font-base);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-muted-light);
+  margin: 0 0 20px;
+}
+
+.statBox {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.statVal {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.statLabel {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+/* ── CTA ── */
+.cta {
+  padding: 120px 0;
+  text-align: center;
+  background-color: #04141c;
+}
+
+.ctaHeading {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -1px;
+  color: var(--color-text-light);
+  margin: 0 0 16px;
+}
+
+.ctaSub {
+  font-family: var(--font-base);
+  font-size: 18px;
+  color: var(--color-text-muted-light);
+  margin: 0 0 40px;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--color-bg-dark);
+  background-color: var(--color-accent);
+  padding: 16px 40px;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 200ms ease;
+}
+
+.ctaBtn:hover {
+  background-color: #4b7a7c;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .stickyContainer {
+    flex-direction: column;
+  }
+  
+  .imageColumn {
+    width: 100%;
+    height: auto;
+    display: none; /* Hide sticky image on mobile */
+  }
+  
+  .contentColumn {
+    width: 100%;
+    padding: 0 20px;
+  }
+  
+  .contentBlock {
+    min-height: auto;
+    padding: 24px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 140px 0 60px;
+  }
+  .blockInner {
+    padding: 32px 24px;
+  }
+  .blockHeadline {
+    font-size: 24px;
+  }
+}

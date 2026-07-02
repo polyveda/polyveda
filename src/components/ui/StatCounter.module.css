@@ -1,0 +1,37 @@
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stat.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.value {
+  font-family: var(--font-heading);
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 600;
+  letter-spacing: -3px;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.label {
+  font-family: var(--font-base);
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 500;
+  color: var(--color-bg-light);
+  letter-spacing: 0.02em;
+}
+
+.note {
+  font-family: var(--font-base);
+  font-size: 12px;
+  color: var(--color-text-muted-light);
+  line-height: 1.5;
+}

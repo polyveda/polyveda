@@ -1,0 +1,235 @@
+/* ── Shell ── */
+.section {
+  padding: clamp(80px, 12vw, 160px) 0;
+  background-color: var(--color-bg-dark);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Subtle film grain overlay */
+.grainOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ambient mouse-tracking orb */
+.ambientOrb {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(95, 149, 152, 0.12) 0%, transparent 70%);
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  /* framer-motion will drive x and y */
+  will-change: transform;
+}
+
+/* ── Header ── */
+.header {
+  padding: 0 clamp(20px, 5vw, 80px);
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  will-change: transform;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-base);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 64px);
+  font-weight: 600;
+  letter-spacing: -2px;
+  line-height: 1.07;
+  color: var(--color-bg-light);
+  margin: 0 0 20px;
+  max-width: 640px;
+}
+
+.subtitle {
+  font-family: var(--font-base);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.subtitle::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Viewport ── */
+.viewport {
+  width: 100%;
+  overflow: visible;
+  cursor: grab;
+  padding-bottom: 24px; /* Extra bottom space so 3D cards don't clip */
+  position: relative;
+  z-index: 1;
+}
+.viewport:active { cursor: grabbing; }
+
+.track {
+  display: flex;
+  gap: 24px;
+  padding: 0 clamp(20px, 5vw, 80px);
+  width: max-content;
+  will-change: transform;
+}
+
+/* ── Cards ── */
+.card {
+  width: clamp(300px, 32vw, 420px);
+  flex-shrink: 0;
+  position: relative;
+  /* Glow layer absolutely positioned inside */
+  overflow: visible;
+  user-select: none;
+}
+
+/* Dynamic spotlight that follows cursor inside the card */
+.cardGlow {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(95, 149, 152, 0.22) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+
+.cardInner {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: clamp(24px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.card:hover .cardInner {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(95, 149, 152, 0.35);
+  box-shadow:
+    0 0 0 0.5px rgba(95, 149, 152, 0.2),
+    0 24px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+/* Meta row */
+.cardMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.cardEyebrow {
+  font-family: var(--font-base);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.cardNumber {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: rgba(255, 255, 255, 0.12);
+  transition: color 0.3s ease;
+}
+
+/* Title with monospace feel for scramble effect */
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  color: var(--color-bg-light);
+  margin: 0 0 16px;
+  /* Monospace fallback for scramble so characters don't jump */
+  font-variant-numeric: tabular-nums;
+}
+
+.cardDesc {
+  font-family: var(--font-base);
+  font-size: clamp(13px, 1.3vw, 15px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0 0 32px;
+  flex-grow: 1;
+}
+
+/* Footer line + CTA */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.cardLine {
+  flex: 1;
+  height: 1px;
+  background: var(--color-accent);
+  transform-origin: left center;
+}
+
+.cardCta {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .track { gap: 16px; }
+  .ambientOrb { width: 400px; height: 400px; }
+  .title { letter-spacing: -1.5px; }
+}
