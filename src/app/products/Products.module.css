@@ -45,7 +45,8 @@
 
 /* ── Products Grid ── */
 .productsSection {
-  padding: 40px 0 120px;
+  padding: 80px 0 120px;
+  background-color: var(--color-bg-light);
 }
 
 .productsGrid {
@@ -59,8 +60,8 @@
 }
 
 .productCard {
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #FFFFFF;
+  border: 1px solid rgba(11, 18, 21, 0.08);
   border-radius: 8px;
   overflow: hidden;
   transition: transform 300ms ease, border-color 300ms ease;
@@ -120,7 +121,7 @@
   font-family: var(--font-heading);
   font-size: 28px;
   font-weight: 600;
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
   margin: 0 0 12px;
   letter-spacing: -0.5px;
 }
@@ -135,7 +136,7 @@
 .cardDesc {
   font-family: var(--font-base);
   font-size: 15px;
-  color: var(--color-text-muted-light);
+  color: var(--color-text-muted-dark);
   line-height: 1.6;
   margin: 0 0 32px;
   flex-grow: 1;
@@ -148,9 +149,9 @@
   font-family: var(--font-heading);
   font-size: 13px;
   letter-spacing: 2px;
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
   text-decoration: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(11, 18, 21, 0.1);
   padding-top: 24px;
   text-transform: uppercase;
   transition: color 200ms ease;
