@@ -39,11 +39,6 @@ export function ScrollSyncedText() {
     <section ref={containerRef} className={styles.section}>
       <div className={styles.gridBackground} />
       
-      {/* Decorative HUD Elements */}
-      <div className={styles.reticleTopLeft} />
-      <div className={styles.reticleTopRight} />
-      <div className={styles.reticleBottomLeft} />
-      <div className={styles.reticleBottomRight} />
 
       <div className={styles.ambientSpotlight} />
 

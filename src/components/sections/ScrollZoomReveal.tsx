@@ -34,17 +34,12 @@ export function ScrollZoomReveal() {
     <section ref={ref} className={styles.section}>
       <div className={styles.gridBackground} />
       
-      {/* Decorative HUD Elements */}
-      <div className={styles.reticleTopLeft} />
-      <div className={styles.reticleTopRight} />
-      <div className={styles.reticleBottomLeft} />
-      <div className={styles.reticleBottomRight} />
-      
+
       <div className={styles.stickyContainer}>
         {/* Left Text */}
         <motion.div className={styles.sideTextContainer} style={{ opacity: textOpacity, textAlign: 'right' }}>
           <div className={styles.technicalFrame}>
-            <span className={styles.bracket}>[</span> Est. 2026 <span className={styles.bracket}>]</span>
+            <span className={styles.bracket}>[</span> POLYVEDA <span className={styles.bracket}>]</span>
           </div>
           
           <div className={styles.rotatingBadge}>
@@ -52,7 +47,7 @@ export function ScrollZoomReveal() {
               <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
               <text>
                 <textPath href="#circlePath" startOffset="0%" className={styles.badgeText}>
-                  POLYVEDA ◆ SINCE 2026 ◆ ENGINEERED ◆
+                  POLYVEDA ◆ PACKAGING ◆ ENGINEERED ◆
                 </textPath>
               </text>
             </svg>

@@ -103,10 +103,6 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <div className={styles.imageCol}>
               <div className={styles.imageWrapper}>
                 <div className={styles.hudOverlay} />
-                <div className={styles.reticleTopLeft} />
-                <div className={styles.reticleTopRight} />
-                <div className={styles.reticleBottomLeft} />
-                <div className={styles.reticleBottomRight} />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={product.image} alt={`${product.name} - Reusable PP Corrugated Packaging by Polyveda`} className={styles.mainImage} />
               </div>

@@ -61,15 +61,6 @@ export function Hero() {
             />
           </div>
 
-          {/* Corner HUD reticles */}
-          {(['TL','TR','BL','BR'] as const).map((pos) => (
-            <motion.div
-              key={pos}
-              className={`${styles.reticle} ${styles[`reticle${pos}`]}`}
-              style={{ opacity: reticleOpacity }}
-            />
-          ))}
-
           {/* Frame / scan label */}
           <motion.div className={styles.frameLabel} style={{ opacity: reticleOpacity }}>
             PP CORRUGATED · SCROLL TO EXPLORE
@@ -81,7 +72,7 @@ export function Hero() {
             style={{ opacity: centerOpacity, scale: centerScale, y: centerY }}
           >
             <div className={styles.hudLineTop} />
-            <span className={styles.centerEyebrow}>Polyveda · Est. 2026</span>
+            <span className={styles.centerEyebrow}>Polyveda</span>
             <h1 className={styles.centerTitle}>
               Engineered to endure.
               <span className={styles.centerTitleAccent}>Designed to return.</span>
