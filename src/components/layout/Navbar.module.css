@@ -1,18 +1,34 @@
+.logoLink {
+  text-decoration: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+}
+
 .floatingLogo {
   padding: 24px 28px;
   display: flex;
   align-items: center;
-  /* position is driven by Framer Motion layoutId after preloader */
 }
 
 .logoImg {
-  height: 96px;
+  height: 105px;
   width: auto;
   object-fit: contain;
   display: block;
   opacity: 1 !important;
   pointer-events: none;
   user-select: none;
+  /* Crop out the "polyveda" text at the bottom of the image */
+  clip-path: inset(0px 0px 35% 0px);
+  margin-bottom: -16px; /* Offset the cropped space so it sits flush */
+  /* Exact edge white outline trick for transparent PNGs - subtle */
+  filter: 
+    drop-shadow(0.5px 0px 0px rgba(255, 255, 255, 0.3))
+    drop-shadow(-0.5px 0px 0px rgba(255, 255, 255, 0.3))
+    drop-shadow(0px 0.5px 0px rgba(255, 255, 255, 0.3))
+    drop-shadow(0px -0.5px 0px rgba(255, 255, 255, 0.3));
 }
 
 .floatingNavWrapper {
@@ -161,6 +177,10 @@
 }
 
 @media (max-width: 480px) {
+  .logoLink {
+    top: 0;
+    bottom: auto;
+  }
   .floatingLogo {
     top: 24px;
     left: 24px;
@@ -201,6 +221,10 @@
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
+  .logoLink {
+    top: 0;
+    bottom: auto;
+  }
   .floatingLogo {
     top: 24px;
     left: 24px;

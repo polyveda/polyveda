@@ -125,11 +125,11 @@
 }
 
 /* ─────────────────────────────────────────────
-   BOTTOM-LEFT ANCHOR — always visible
+   TOP-LEFT ANCHOR — always visible
 ───────────────────────────────────────────── */
-.bottomAnchor {
+.topLeftAnchor {
   position: absolute;
-  bottom: 40px;
+  top: 40px;
   left: 40px;
   z-index: 5;
   pointer-events: none;
@@ -209,7 +209,8 @@
     margin-top: -10vh;
   }
 
-  .bottomAnchor {
+  .topLeftAnchor {
+    top: auto;
     bottom: 80px;
     left: 20px;
   }

@@ -128,7 +128,7 @@ export const productsData: Product[] = [
     tagline: 'Printed. Weatherproof. Eye-catching.',
     description: 'Durable, weather-resistant PP corrugated signage for indoor and outdoor use. POS & POP display stands, and lightweight customizable exhibition stalls.',
     longDescription: 'Leveraging the smooth, corona-treated surface of our premium PP corrugated sheets, Polyveda manufactures vibrant, high-resolution signage and Point-of-Sale (POS) displays for retail and marketing use. Our displays are incredibly lightweight yet structurally rigid, making them perfect for trade shows, retail environments, and outdoor real estate signage across India. Impervious to rain and UV-stabilized, they will not warp or degrade in harsh outdoor conditions.',
-    image: 'https://res.cloudinary.com/kouanazg/image/upload/f_auto,q_auto/v1782977438/Signage_and_Retail_Displays_2K_202607011129_fi0jb0.jpg',
+    image: 'https://res.cloudinary.com/kouanazg/image/upload/f_auto,q_auto/v1783072603/Signage_or_displays_corrugated_s__202607031525_d2qduj.jpg',
     metaTitle: 'PP Corrugated Signage & Retail Displays | Polyveda India',
     metaDescription: 'Custom PP corrugated signage, POS displays, and exhibition stands. Weatherproof, UV-stable, lightweight. High-resolution printing available. Manufactured in India.',
     specs: [

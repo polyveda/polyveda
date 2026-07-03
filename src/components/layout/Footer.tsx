@@ -4,10 +4,17 @@ import styles from './Footer.module.css';
 
 export function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer id="site-footer" className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.brandColumn}>
-          <h2 className={styles.logo}>Polyveda</h2>
+          <div className={styles.brandLockup}>
+            <img 
+              src="https://res.cloudinary.com/dzc0mfs9z/image/upload/v1782738371/08dd02e2-c75d-447f-bd54-8334f817857a_t9zcwj.png" 
+              alt="Polyveda" 
+              className={styles.logoImg} 
+            />
+            <h2 className={styles.logoText}>Polyveda</h2>
+          </div>
           <p className={styles.desc}>
             Innovative Polypropylene (PP) Corrugated Packaging Solutions.
           </p>

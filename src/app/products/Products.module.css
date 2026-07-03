@@ -11,7 +11,7 @@
 
 /* ── Hero ── */
 .hero {
-  padding: 160px 0 100px;
+  padding: 100px 0 100px;
   background: radial-gradient(circle at top right, rgba(29, 84, 109, 0.2) 0%, transparent 50%);
 }
 

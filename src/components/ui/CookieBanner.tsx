@@ -8,6 +8,11 @@ import styles from './CookieBanner.module.css';
 
 export function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
+  const [showCustomize, setShowCustomize] = useState(false);
+  
+  // Toggles state
+  const [analyticsEnabled, setAnalyticsEnabled] = useState(true);
+  const [marketingEnabled, setMarketingEnabled] = useState(true);
 
   useEffect(() => {
     // Check if user has already consented
@@ -19,18 +24,25 @@ export function CookieBanner() {
     }
   }, []);
 
-  const handleAccept = () => {
-    localStorage.setItem('polyveda_cookie_consent', 'accepted');
+  const savePreferences = (preferences: { analytics: boolean; marketing: boolean }) => {
+    localStorage.setItem('polyveda_cookie_consent', JSON.stringify(preferences));
     setShowBanner(false);
     
-    // Here you would typically initialize Google Analytics or other tracking scripts
-    // window.gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    // Here you would typically initialize Google Analytics or other tracking scripts based on preferences
+    /*
+    window.gtag('consent', 'update', { 
+      'analytics_storage': preferences.analytics ? 'granted' : 'denied',
+      'ad_storage': preferences.marketing ? 'granted' : 'denied'
+    });
+    */
   };
 
-  const handleDecline = () => {
-    localStorage.setItem('polyveda_cookie_consent', 'declined');
-    setShowBanner(false);
-    // Analytics remain disabled
+  const handleAcceptAll = () => {
+    savePreferences({ analytics: true, marketing: true });
+  };
+
+  const handleSaveCustom = () => {
+    savePreferences({ analytics: analyticsEnabled, marketing: marketingEnabled });
   };
 
   return (
@@ -43,18 +55,74 @@ export function CookieBanner() {
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', damping: 20, stiffness: 100 }}
         >
-          <div className={styles.content}>
-            <h4>We value your privacy</h4>
-            <p>
-              We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
-              By clicking "Accept All", you consent to our use of cookies. 
-              Read our <Link href="/cookies-policy">Cookies Policy</Link> and <Link href="/privacy-policy">Privacy Policy</Link> for more information.
-            </p>
-          </div>
-          <div className={styles.actions}>
-            <Button variant="outline" onClick={handleDecline}>Decline All</Button>
-            <Button onClick={handleAccept}>Accept All</Button>
-          </div>
+          {!showCustomize ? (
+            <div className={styles.mainView}>
+              <div className={styles.content}>
+                <h4>We value your privacy</h4>
+                <p>
+                  We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
+                  By clicking "Accept All", you consent to our use of cookies. 
+                  Read our <Link href="/cookies-policy">Cookies Policy</Link> and <Link href="/privacy-policy">Privacy Policy</Link> for more information.
+                </p>
+              </div>
+              <div className={styles.actions}>
+                <Button variant="outline" onClick={() => setShowCustomize(true)}>Customize</Button>
+                <Button onClick={handleAcceptAll}>Accept All</Button>
+              </div>
+            </div>
+          ) : (
+            <div className={styles.customizeView}>
+              <div className={styles.customizeHeader}>
+                <h4>Customize Preferences</h4>
+                <button className={styles.backBtn} onClick={() => setShowCustomize(false)}>Back</button>
+              </div>
+              
+              <div className={styles.togglesList}>
+                <div className={styles.toggleRow}>
+                  <div className={styles.toggleInfo}>
+                    <h5>Essential Cookies</h5>
+                    <p>Required for the website to function properly. Cannot be disabled.</p>
+                  </div>
+                  <div className={styles.toggleSwitchDisabled}>
+                    <div className={`${styles.toggleKnob} ${styles.knobActive}`} />
+                  </div>
+                </div>
+
+                <div className={styles.toggleRow}>
+                  <div className={styles.toggleInfo}>
+                    <h5>Analytics Cookies</h5>
+                    <p>Help us understand how visitors interact with the website by collecting reporting information anonymously.</p>
+                  </div>
+                  <button 
+                    className={`${styles.toggleSwitch} ${analyticsEnabled ? styles.switchActive : ''}`} 
+                    onClick={() => setAnalyticsEnabled(!analyticsEnabled)}
+                    aria-pressed={analyticsEnabled}
+                  >
+                    <div className={`${styles.toggleKnob} ${analyticsEnabled ? styles.knobActive : ''}`} />
+                  </button>
+                </div>
+
+                <div className={styles.toggleRow}>
+                  <div className={styles.toggleInfo}>
+                    <h5>Marketing Cookies</h5>
+                    <p>Used to track visitors across websites to display relevant advertisements.</p>
+                  </div>
+                  <button 
+                    className={`${styles.toggleSwitch} ${marketingEnabled ? styles.switchActive : ''}`} 
+                    onClick={() => setMarketingEnabled(!marketingEnabled)}
+                    aria-pressed={marketingEnabled}
+                  >
+                    <div className={`${styles.toggleKnob} ${marketingEnabled ? styles.knobActive : ''}`} />
+                  </button>
+                </div>
+              </div>
+
+              <div className={styles.customizeActions}>
+                <Button variant="outline" onClick={handleAcceptAll}>Accept All</Button>
+                <Button onClick={handleSaveCustom}>Save Preferences</Button>
+              </div>
+            </div>
+          )}
         </motion.div>
       )}
     </AnimatePresence>

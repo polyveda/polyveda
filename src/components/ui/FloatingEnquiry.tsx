@@ -8,20 +8,8 @@ import styles from './FloatingEnquiry.module.css';
 
 export function FloatingEnquiry() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
-
-  // Auto open randomly between 15 and 45 seconds after initial load
-  useEffect(() => {
-    const minDelay = 15000;
-    const maxDelay = 45000;
-    const randomDelay = Math.floor(Math.random() * (maxDelay - minDelay + 1) + minDelay);
-    
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, randomDelay);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -148,24 +136,48 @@ export function FloatingEnquiry() {
       </AnimatePresence>
 
       <div className={styles.fabContainer} style={{ display: isOpen ? 'none' : 'flex' }}>
-        <a 
-          href="https://wa.me/919876543210" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className={`${styles.fab} ${styles.fabWhatsapp}`}
-          aria-label="Chat on WhatsApp"
-        >
-          <Phone size={24} />
-        </a>
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div 
+              className={styles.fabMenu}
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.8 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            >
+              <button
+                className={`${styles.fabSmall} ${styles.fabForm}`}
+                onClick={() => { setIsOpen(true); setIsMenuOpen(false); }}
+                aria-label="Open Enquiry Form"
+                title="Send Enquiry"
+              >
+                <MessageSquareText size={20} />
+              </button>
+              
+              <a 
+                href="https://wa.me/919876543210" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`${styles.fabSmall} ${styles.fabWhatsapp}`}
+                aria-label="Chat on WhatsApp"
+                title="Chat on WhatsApp"
+              >
+                <Phone size={20} />
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <motion.button
-          className={styles.fab}
-          onClick={() => setIsOpen(!isOpen)}
+          className={styles.fabMain}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          aria-label="Open Enquiry Form"
+          aria-label="Toggle Contact Menu"
         >
-          <MessageSquareText size={24} />
+          <motion.div animate={{ rotate: isMenuOpen ? 90 : 0 }}>
+            {isMenuOpen ? <X size={24} /> : <MessageSquareText size={24} />}
+          </motion.div>
         </motion.button>
       </div>
     </div>

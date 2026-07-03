@@ -135,22 +135,7 @@ function KineticCard({ card, index }: { card: typeof CARDS[0]; index: number }) 
         <h3 className={styles.cardTitle}>{scrambledTitle}</h3>
         <p className={styles.cardDesc}>{card.desc}</p>
 
-        {/* Animated bottom line that expands on hover */}
-        <div className={styles.cardFooter}>
-          <motion.div
-            className={styles.cardLine}
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: hovered ? 1 : 0 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-          />
-          <motion.span
-            className={styles.cardCta}
-            animate={{ opacity: hovered ? 1 : 0, x: hovered ? 0 : -8 }}
-            transition={{ duration: 0.2 }}
-          >
-            Learn more →
-          </motion.span>
-        </div>
+
       </div>
     </motion.div>
   );
@@ -252,15 +237,7 @@ export function KineticFlow() {
         className={styles.header}
         style={{ x: headerX, y: headerY }}
       >
-        <motion.span
-          className={styles.eyebrow}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          What we engineer
-        </motion.span>
+
 
         <motion.h2
           className={styles.title}

@@ -25,6 +25,7 @@ const footerLinks = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
   const [hoveredNav, setHoveredNav] = useState<number | null>(null);
   const [hoveredFooter, setHoveredFooter] = useState<number | null>(null);
   const [menuWidth, setMenuWidth] = useState(440);
@@ -57,6 +58,22 @@ export function Navbar() {
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
+  // Track if footer is in view
+  useEffect(() => {
+    const footerElement = document.getElementById('site-footer');
+    if (!footerElement) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsFooterVisible(entry.isIntersecting);
+      },
+      { rootMargin: '0px', threshold: 0 }
+    );
+
+    observer.observe(footerElement);
+    return () => observer.disconnect();
   }, []);
 
   // Close menu on click outside
@@ -128,22 +145,30 @@ export function Navbar() {
 
   return (
     <LayoutGroup>
-      {/* Floating Logo — layoutId matches Preloader for shared element fly */}
-      {preloaderDone && (
-        <Link href="/" style={{ textDecoration: 'none', position: 'fixed', top: 0, left: 0, zIndex: 9999 }}>
-          <div className={styles.floatingLogo}>
-            <motion.img
-              layoutId="site-logo"
-              src="https://res.cloudinary.com/dzc0mfs9z/image/upload/v1782738371/08dd02e2-c75d-447f-bd54-8334f817857a_t9zcwj.png"
-              alt="Polyveda"
-              className={styles.logoImg}
-              draggable={false}
-              initial={false}
-              transition={{ type: 'spring', stiffness: 70, damping: 18, mass: 0.8 }}
-            />
-          </div>
-        </Link>
-      )}
+      {/* Floating Logo — fades out when footer is visible */}
+      <AnimatePresence>
+        {preloaderDone && !isFooterVisible && (
+          <Link href="/" className={styles.logoLink}>
+            <motion.div 
+              className={styles.floatingLogo}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.img
+                layoutId="site-logo"
+                src="https://res.cloudinary.com/dzc0mfs9z/image/upload/v1782738371/08dd02e2-c75d-447f-bd54-8334f817857a_t9zcwj.png"
+                alt="Polyveda"
+                className={styles.logoImg}
+                draggable={false}
+                initial={false}
+                transition={{ type: 'spring', stiffness: 70, damping: 18, mass: 0.8 }}
+              />
+            </motion.div>
+          </Link>
+        )}
+      </AnimatePresence>
 
       {/* Floating Morphed Menu */}
       <div className={styles.floatingNavWrapper}>

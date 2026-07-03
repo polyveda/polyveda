@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/Button';
 import styles from './IndustryGrid.module.css';
 import { motion, useInView, useMotionValue, animate, useTransform, MotionValue } from 'framer-motion';
 import { HardHat, Briefcase, Car, ShoppingCart, Cpu, ShieldPlus } from 'lucide-react';
@@ -102,15 +103,8 @@ function CoverFlowCard({
         }
       }}
     >
-      <Link
-        href={`/industries/${ind.id}`}
+      <div
         className={styles.cardInner}
-        onClick={e => {
-          if (isDragging.current || !isActive) {
-            e.preventDefault();
-          }
-        }}
-        draggable={false}
       >
         <span className={styles.ghostIndex} aria-hidden>{indexStr}</span>
 
@@ -127,7 +121,7 @@ function CoverFlowCard({
         </div>
 
         <div className={styles.accentLine} aria-hidden />
-      </Link>
+      </div>
     </motion.div>
   );
 }
@@ -146,6 +140,7 @@ export function IndustryGrid() {
 
   const dragStartX = useRef(0);
   const isDragging = useRef(false);
+  const hasDragged = useRef(false);
 
   const goTo = useCallback((newActive: number) => {
     setActive(newActive);
@@ -154,6 +149,7 @@ export function IndustryGrid() {
 
   const handlePointerDown = (e: React.PointerEvent) => {
     isDragging.current = true;
+    hasDragged.current = false;
     dragStartX.current = e.clientX;
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
   };
@@ -161,6 +157,9 @@ export function IndustryGrid() {
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!isDragging.current) return;
     const deltaX = e.clientX - dragStartX.current;
+    if (Math.abs(deltaX) > 5) {
+      hasDragged.current = true; // Mark as dragged if moved more than 5px
+    }
     // Fluid 1:1 drag tracking (1 card per 150px)
     rawActive.set(active - deltaX / 150);
   };
@@ -221,7 +220,7 @@ export function IndustryGrid() {
                 rawActive={rawActive}
                 ind={ind}
                 realIndex={realIndex}
-                isDragging={isDragging}
+                isDragging={hasDragged} // Pass hasDragged to the card instead of isDragging
                 onClick={() => goTo(absIndex)}
                 isActive={active === absIndex}
               />
@@ -253,6 +252,18 @@ export function IndustryGrid() {
               />
             );
           })}
+        </motion.div>
+
+        {/* Global CTA for Industries */}
+        <motion.div
+          className={styles.globalCta}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.6 }}
+        >
+          <Link href="/industries">
+            <Button variant="outline">View All Industries</Button>
+          </Link>
         </motion.div>
 
       </div>

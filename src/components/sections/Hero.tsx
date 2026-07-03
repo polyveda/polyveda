@@ -75,7 +75,7 @@ export function Hero() {
             <span className={styles.centerEyebrow}>Polyveda</span>
             <h1 className={styles.centerTitle}>
               Engineered to endure.
-              <span className={styles.centerTitleAccent}>Designed to return.</span>
+              <span className={styles.centerTitleAccent}>Designed to reuse.</span>
             </h1>
             <div className={styles.hudLineBottom} />
             <motion.div 
@@ -87,8 +87,8 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* ── BOTTOM-LEFT ANCHOR — always visible ── */}
-          <div className={styles.bottomAnchor}>
+          {/* ── TOP-LEFT ANCHOR — always visible ── */}
+          <div className={styles.topLeftAnchor}>
             <span className={styles.anchorLabel}>Product Range</span>
             <p className={styles.anchorTitle}>
               Engineered for<br />
@@ -98,25 +98,6 @@ export function Hero() {
 
         </div>
       </section>
-
-      {/* ── POST-HERO CTA STRIP — below the scroll area ── */}
-      <div className={styles.heroCtaStrip}>
-        <div className={styles.heroCtaCopy}>
-          <h2>Ready to upgrade your packaging?</h2>
-          <p>
-            Custom-engineered PP corrugated solutions. From single-unit trays to
-            high-volume returnable logistics systems, we build packaging that lasts.
-          </p>
-        </div>
-        <div className={styles.heroCtaButtons}>
-          <Link href="/contact">
-            <Button variant="primary">Request Custom Quote</Button>
-          </Link>
-          <Link href="/capabilities">
-            <Button variant="outline">View Capabilities</Button>
-          </Link>
-        </div>
-      </div>
     </>
   );
 }

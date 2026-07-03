@@ -13,7 +13,7 @@
 
 /* ── Hero ── */
 .hero {
-  padding: 180px 0 100px;
+  padding: 100px 0 100px;
   position: relative;
   overflow: hidden;
   background-color: var(--color-bg-dark);

@@ -212,10 +212,15 @@
 ──────────────────────────────────────────── */
 .dots {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 40px;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.globalCta {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
 }
 
 .dot {

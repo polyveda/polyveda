@@ -11,7 +11,7 @@
 
 /* ── Breadcrumb ── */
 .breadcrumbContainer {
-  padding: 140px 0 0;
+  padding: 100px 0 0;
   max-width: 1200px;
   margin: 0 auto;
   padding-left: 32px;
@@ -48,7 +48,7 @@
 
 /* ── Article Header ── */
 .articleHeader {
-  padding: 48px 0 60px;
+  padding: 100px 0 60px;
   border-bottom: 1px solid rgba(6,30,41,0.1);
 }
 

@@ -6,12 +6,16 @@
   background-color: #061e29;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 24px 32px;
+  z-index: 9999;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Main View ── */
+.mainView {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 32px;
-  z-index: 9999;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .content {
@@ -19,7 +23,7 @@
   max-width: 800px;
 }
 
-.content h4 {
+.content h4, .customizeHeader h4 {
   font-family: var(--font-heading);
   font-size: 18px;
   color: var(--color-accent);
@@ -50,19 +54,138 @@
   flex-shrink: 0;
 }
 
+/* ── Customize View ── */
+.customizeView {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.customizeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.backBtn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted-light);
+  font-family: var(--font-base);
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.backBtn:hover {
+  color: var(--color-text-light);
+}
+
+.togglesList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.toggleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toggleRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.toggleInfo h5 {
+  font-family: var(--font-base);
+  font-size: 15px;
+  color: var(--color-text-light);
+  margin: 0 0 4px 0;
+  font-weight: 500;
+}
+
+.toggleInfo p {
+  font-family: var(--font-base);
+  font-size: 13px;
+  color: var(--color-text-muted-light);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.toggleSwitch, .toggleSwitchDisabled {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.toggleSwitchDisabled {
+  cursor: not-allowed;
+  background-color: var(--color-accent);
+  opacity: 0.5;
+}
+
+.switchActive {
+  background-color: var(--color-accent);
+}
+
+.toggleKnob {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 200ms ease;
+}
+
+.knobActive {
+  transform: translateX(20px);
+}
+
+.customizeActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 8px;
+}
+
 @media (max-width: 768px) {
   .bannerContainer {
+    padding: 24px;
+  }
+  
+  .mainView {
     flex-direction: column;
     align-items: stretch;
-    padding: 24px;
     gap: 20px;
   }
   
-  .actions {
+  .actions, .customizeActions {
     flex-direction: column;
   }
   
-  .actions button {
+  .actions button, .customizeActions button {
     width: 100%;
+  }
+
+  .toggleRow {
+    flex-direction: column;
+    gap: 16px;
   }
 }
