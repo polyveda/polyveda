@@ -19,11 +19,11 @@ export function Hero() {
   // Map scroll progress to finish animation early (at 80% scroll), so the final frame stays paused
   const canvasProgress = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
-  // Smooth progress for canvas
+  // Smooth progress for canvas (heavier mass and lower stiffness makes the sequence glide beautifully during fast scrolls)
   const smoothProgress = useSpring(canvasProgress, {
-    stiffness: 400,
-    damping: 90,
-    mass: 0.1,
+    stiffness: 150,
+    damping: 50,
+    mass: 0.4,
   });
 
   // Determine mobile vs desktop frames

@@ -61,6 +61,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${plusJakarta.variable} ${outfit.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Preload first frames for LCP optimization */}
+        <link rel="preload" as="image" href="/hero-sequence-new/frame_001.jpg" />
+        <link rel="preload" as="image" href="/hero-sequence-mobile/frame_001.jpg" media="(max-width: 768px)" />
+      </head>
       <body suppressHydrationWarning>
         <script
           type="application/ld+json"

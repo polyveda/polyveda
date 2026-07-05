@@ -17,35 +17,86 @@ export function ScrollSequenceCanvas({ frameCount, progress, imagePathPrefix = '
   const [loaded, setLoaded] = useState(0);
   const { setLoadProgress } = usePreloader();
 
-  // Preload all frames
+  // Preload frames in chunks
   useEffect(() => {
     let loadedCount = 0;
-    const images: HTMLImageElement[] = [];
-    
-    for (let i = 1; i <= frameCount; i++) {
-      const img = new Image();
-      // Pad to 3 digits (001, 002, ...)
-      const index = i.toString().padStart(3, '0');
-      img.src = `${imagePathPrefix}/frame_${index}.jpg`;
-      img.onload = () => {
-        loadedCount++;
-        setLoaded(loadedCount);
-        setLoadProgress(Math.floor((loadedCount / frameCount) * 100));
-        // Draw the first frame as soon as it's loaded
-        if (i === 1 && contextRef.current && canvasRef.current) {
-          drawFrame(img);
+    const images: HTMLImageElement[] = Array(frameCount).fill(null);
+    let isCancelled = false;
+
+    // Buffer to unblock preloader early
+    const BUFFER_FRAMES = Math.min(60, frameCount);
+
+    const loadFrame = (i: number) => {
+      return new Promise<void>((resolve) => {
+        if (isCancelled) return resolve();
+        
+        const img = new Image();
+        const index = i.toString().padStart(3, '0');
+        img.src = `${imagePathPrefix}/frame_${index}.jpg`;
+        
+        img.onload = () => {
+          if (isCancelled) return;
+          images[i - 1] = img;
+          loadedCount++;
+          
+          // Throttle state updates: update every 5 frames, or exactly at the buffer threshold
+          if (loadedCount % 5 === 0 || loadedCount === BUFFER_FRAMES || loadedCount === frameCount) {
+             setLoaded(loadedCount);
+             // Cap progress at 100 once buffer is reached
+             const progress = Math.min(100, Math.floor((loadedCount / BUFFER_FRAMES) * 100));
+             setLoadProgress(progress);
+          }
+          
+          if (i === 1 && contextRef.current && canvasRef.current) {
+            drawFrame(img);
+          }
+          resolve();
+        };
+        img.onerror = () => {
+          if (!isCancelled) resolve();
+        };
+      });
+    };
+
+    const startLoading = async () => {
+      // Phase 1: Load buffer frames in chunks of 10
+      const loadChunk = async (start: number, end: number) => {
+        const promises = [];
+        for (let i = start; i <= end; i++) {
+          if (i <= frameCount) promises.push(loadFrame(i));
         }
+        await Promise.all(promises);
       };
-      images.push(img);
-    }
-    
+
+      for (let i = 1; i <= BUFFER_FRAMES; i += 10) {
+        if (isCancelled) return;
+        await loadChunk(i, Math.min(i + 9, BUFFER_FRAMES));
+      }
+
+      // Phase 2: Load the rest quietly in chunks of 5
+      if (frameCount > BUFFER_FRAMES) {
+        for (let i = BUFFER_FRAMES + 1; i <= frameCount; i += 5) {
+          if (isCancelled) return;
+          await loadChunk(i, Math.min(i + 4, frameCount));
+          // brief yield to let main thread breathe
+          await new Promise(r => setTimeout(r, 40));
+        }
+      }
+    };
+
+    startLoading();
     imagesRef.current = images;
-  }, [frameCount]);
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [frameCount, imagePathPrefix, setLoadProgress]);
 
   // Set up canvas context
   useLayoutEffect(() => {
     if (canvasRef.current) {
-      contextRef.current = canvasRef.current.getContext('2d');
+      // alpha: false skips transparency blending, massively boosting GPU performance
+      contextRef.current = canvasRef.current.getContext('2d', { alpha: false });
       handleResize();
     }
     
