@@ -114,7 +114,7 @@
 .frameLabel {
   position: absolute;
   bottom: 36px;
-  right: 40px;
+  right: 120px;
   font-family: var(--font-base);
   font-size: 10px;
   letter-spacing: 3px;
