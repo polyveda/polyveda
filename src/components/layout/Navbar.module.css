@@ -7,28 +7,25 @@
 }
 
 .floatingLogo {
-  padding: 24px 28px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  margin: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .logoImg {
-  height: 105px;
+  height: 60px;
   width: auto;
   object-fit: contain;
   display: block;
   opacity: 1 !important;
   pointer-events: none;
   user-select: none;
-  /* Crop out the "polyveda" text at the bottom of the image */
-  clip-path: inset(0px 0px 35% 0px);
-  margin-bottom: -16px; /* Offset the cropped space so it sits flush */
-  /* Exact edge white outline trick for transparent PNGs - subtle */
-  filter: 
-    drop-shadow(0.5px 0px 0px rgba(255, 255, 255, 0.3))
-    drop-shadow(-0.5px 0px 0px rgba(255, 255, 255, 0.3))
-    drop-shadow(0px 0.5px 0px rgba(255, 255, 255, 0.3))
-    drop-shadow(0px -0.5px 0px rgba(255, 255, 255, 0.3));
 }
 
 .floatingNavWrapper {

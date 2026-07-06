@@ -13,7 +13,7 @@ export function Footer() {
               alt="Polyveda" 
               className={styles.logoImg} 
             />
-            <h2 className={styles.logoText}>Polyveda</h2>
+            <h2 className={styles.logoText}>Polyveda Packaging</h2>
           </div>
           <p className={styles.desc}>
             Innovative Polypropylene (PP) Corrugated Packaging Solutions.
