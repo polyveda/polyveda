@@ -67,23 +67,34 @@
   background-color: var(--color-bg-light);
   border: 1px solid rgba(11, 18, 21, 0.15);
   padding: var(--spacing-3);
-  border-radius: var(--border-radius-sm);
+  border-radius: 12px;
   color: var(--color-text-dark);
   font-family: var(--font-base);
   font-size: 15px;
   font-weight: 500;
   text-align: left;
   cursor: pointer;
-  transition: all 150ms ease;
+  transition: all 0.5s var(--ease-spring);
+  box-shadow: 
+    0 0 0 4px rgba(11, 18, 21, 0.02),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 .optionTile:hover {
   border-color: var(--color-accent);
   background-color: rgba(95, 149, 152, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 0 4px rgba(95, 149, 152, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 .activeTile {
   border-color: var(--color-accent);
   background-color: rgba(95, 149, 152, 0.1);
   color: var(--color-accent);
+  box-shadow: 
+    0 0 0 4px rgba(95, 149, 152, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 .customInputWrapper {
   display: flex;
@@ -153,13 +164,23 @@
   background-color: rgba(0, 0, 0, 0.2);
   border-color: rgba(255, 255, 255, 0.1);
   color: var(--color-text-light);
+  box-shadow: 
+    0 0 0 4px rgba(255, 255, 255, 0.02),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 .themeDark .optionTile:hover {
   border-color: var(--color-accent);
+  box-shadow: 
+    0 0 0 4px rgba(95, 149, 152, 0.15),
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 .themeDark .activeTile {
   border-color: var(--color-accent);
   color: var(--color-accent);
+  box-shadow: 
+    0 0 0 4px rgba(95, 149, 152, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 .themeDark .textarea {
   background-color: rgba(0, 0, 0, 0.2);

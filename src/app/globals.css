@@ -33,6 +33,9 @@
   
   --border-radius-sm: 2px;
   --border-radius-md: 4px;
+  
+  /* High-End Motion & Curves */
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 * {
@@ -62,3 +65,5 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+

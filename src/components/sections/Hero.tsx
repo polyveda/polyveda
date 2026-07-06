@@ -35,13 +35,16 @@ export function Hero() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const frameCount = isMobile ? 175 : 169;
+  const frameCount = isMobile ? 175 : 160;
   const imagePathPrefix = isMobile ? '/hero-sequence-mobile' : '/hero-sequence-new';
 
   // Center overlay: visible at start, fades out by 15% scroll
   const centerOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
   const centerScale  = useTransform(scrollYProgress, [0, 0.12], [1, 0.94]);
   const centerY      = useTransform(scrollYProgress, [0, 0.12], [0, -30]);
+
+  // Glow fades out early — gone by 10% scroll
+  const glowOpacity  = useTransform(scrollYProgress, [0, 0.10], [1, 0]);
 
   // Reticles fade a little slower
   const reticleOpacity = useTransform(scrollYProgress, [0, 0.18], [1, 0]);
@@ -51,6 +54,9 @@ export function Hero() {
       {/* ── 400vh scroll container ── */}
       <section ref={heroRef} className={styles.heroSequenceContainer}>
         <div className={styles.stickyWrapper}>
+
+          {/* Ambient colour glow – visible on load, fades on scroll */}
+          <motion.div className={styles.glowOverlay} style={{ opacity: glowOpacity }} />
 
           {/* Canvas */}
           <div className={styles.canvasContainer}>

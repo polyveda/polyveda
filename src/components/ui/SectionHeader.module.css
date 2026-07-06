@@ -14,7 +14,7 @@
 }
 
 .eyebrow {
-  display: block;
+  display: inline-block;
   font-family: var(--font-base);
   font-size: 11px;
   font-weight: 600;
@@ -22,6 +22,16 @@
   text-transform: uppercase;
   color: var(--color-accent);
   margin-bottom: 18px;
+  background: rgba(95, 149, 152, 0.08);
+  border: 1px solid rgba(95, 149, 152, 0.2);
+  border-radius: 9999px;
+  padding: 4px 14px;
+}
+
+.light .eyebrow {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .heading {
