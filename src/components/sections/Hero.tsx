@@ -40,8 +40,6 @@ export function Hero() {
 
   // Center overlay: visible at start, fades out by 15% scroll
   const centerOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
-  const centerScale  = useTransform(scrollYProgress, [0, 0.12], [1, 0.94]);
-  const centerY      = useTransform(scrollYProgress, [0, 0.12], [0, -30]);
 
   // Glow fades out early — gone by 10% scroll
   const glowOpacity  = useTransform(scrollYProgress, [0, 0.10], [1, 0]);
@@ -75,7 +73,7 @@ export function Hero() {
           {/* ── CENTER INTRO OVERLAY ── fades as you scroll */}
           <motion.div
             className={styles.centerOverlay}
-            style={{ opacity: centerOpacity, scale: centerScale, y: centerY }}
+            style={{ opacity: centerOpacity }}
           >
             <div className={styles.hudLineTop} />
             <span className={styles.centerEyebrow}>Polyveda</span>
@@ -84,13 +82,9 @@ export function Hero() {
               <span className={styles.centerTitleAccent}>Designed to reuse.</span>
             </h1>
             <div className={styles.hudLineBottom} />
-            <motion.div 
-              className={styles.mobileScrollPrompt}
-              animate={{ y: [0, 8, 0] }} 
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            >
+            <div className={styles.mobileScrollPrompt}>
               ↓ Keep Scrolling
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* ── TOP-LEFT ANCHOR — always visible ── */}
