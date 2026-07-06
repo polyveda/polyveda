@@ -62,7 +62,7 @@ export function Hero() {
           <div className={styles.canvasContainer}>
             <ScrollSequenceCanvas 
               frameCount={frameCount} 
-              progress={smoothProgress} 
+              progress={isMobile ? canvasProgress : smoothProgress} 
               imagePathPrefix={imagePathPrefix}
             />
           </div>

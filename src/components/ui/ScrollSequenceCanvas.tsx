@@ -155,16 +155,22 @@ export function ScrollSequenceCanvas({ frameCount, progress, imagePathPrefix = '
     );
   };
 
+  const lastDrawnFrameRef = useRef<number>(-1);
+
   useMotionValueEvent(progress, "change", (latest) => {
-    // Map 0 -> 1 progress to 0 -> 184 index
+    // Map 0 -> 1 progress to 0 -> max index
     const frameIndex = Math.min(
       frameCount - 1,
       Math.floor(latest * frameCount)
     );
     
-    const img = imagesRef.current[frameIndex];
-    if (img && img.complete) {
-      requestAnimationFrame(() => drawFrame(img));
+    // Only re-draw if the frame has actually changed! (Saves massive GPU overhead during spring physics)
+    if (frameIndex !== lastDrawnFrameRef.current) {
+      const img = imagesRef.current[frameIndex];
+      if (img && img.complete) {
+        lastDrawnFrameRef.current = frameIndex;
+        requestAnimationFrame(() => drawFrame(img));
+      }
     }
   });
 
