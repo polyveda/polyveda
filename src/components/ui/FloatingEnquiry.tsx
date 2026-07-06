@@ -1,55 +1,17 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquareText, X, CheckCircle2, Phone } from 'lucide-react';
-import { Button } from './Button';
+import { MessageSquareText, X, Phone } from 'lucide-react';
+import { MultiStepForm } from '@/components/ui/MultiStepForm';
 import styles from './FloatingEnquiry.module.css';
 
 export function FloatingEnquiry() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus('submitting');
-    
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      fullName: formData.get('fullName'),
-      companyName: formData.get('companyName'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      industry: formData.get('industry'),
-      projectDetails: formData.get('projectDetails'),
-      source: 'FloatingWidget'
-    };
-
-    try {
-      const res = await fetch('/api/enquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (res.ok) {
-        setStatus('success');
-      } else {
-        const errorData = await res.json();
-        alert(errorData.error || 'Failed to submit. Please try again or contact via WhatsApp.');
-        setStatus('idle');
-      }
-    } catch (error) {
-      alert('Network error. Please check your connection.');
-      setStatus('idle');
-    }
-  };
 
   const handleClose = () => {
     setIsOpen(false);
-    // Reset status after a delay so it doesn't jump while animating out
-    setTimeout(() => setStatus('idle'), 300);
   };
 
   return (
@@ -71,65 +33,7 @@ export function FloatingEnquiry() {
             </div>
 
             <div className={styles.formBody}>
-              {status === 'success' ? (
-                <motion.div 
-                  className={styles.successState}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                >
-                  <CheckCircle2 size={48} className={styles.successIcon} />
-                  <h4>Request Received</h4>
-                  <p>Our engineering team will review your details and contact you shortly.</p>
-                  <Button onClick={handleClose} variant="outline">Close Window</Button>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit}>
-                  <div className={styles.formGrid}>
-                    <div className={styles.formGroup}>
-                      <label className={styles.label}>Full Name</label>
-                      <input type="text" name="fullName" className={styles.input} required />
-                    </div>
-                    <div className={styles.formGroup}>
-                      <label className={styles.label}>Company</label>
-                      <input type="text" name="companyName" className={styles.input} required />
-                    </div>
-                    <div className={styles.formGroup}>
-                      <label className={styles.label}>Work Email</label>
-                      <input type="email" name="email" className={styles.input} required />
-                    </div>
-                    <div className={styles.formGroup}>
-                      <label className={styles.label}>Phone</label>
-                      <input type="tel" name="phone" className={styles.input} required />
-                    </div>
-                    
-                    <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                      <label className={styles.label}>Industry</label>
-                      <select name="industry" className={styles.select} required defaultValue="">
-                        <option value="" disabled>Select your industry...</option>
-                        <option value="automotive">Automotive</option>
-                        <option value="ecommerce">E-Commerce</option>
-                        <option value="electronics">Electronics</option>
-                        <option value="healthcare">Healthcare</option>
-                        <option value="other">Other Heavy Industry</option>
-                      </select>
-                    </div>
-
-                    <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                      <label className={styles.label}>Project Details</label>
-                      <textarea 
-                        name="projectDetails"
-                        className={styles.textarea} 
-                        placeholder="Briefly describe your requirements..."
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <Button type="submit" disabled={status === 'submitting'} className={styles.submitBtn}>
-                    {status === 'submitting' ? 'Submitting...' : 'Send Enquiry'}
-                  </Button>
-                </form>
-              )}
+              <MultiStepForm source="FloatingWidget" theme="dark" onSuccess={handleClose} />
             </div>
           </motion.div>
         )}

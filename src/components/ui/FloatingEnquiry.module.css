@@ -141,6 +141,8 @@
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  display: flex;
+  flex-direction: column;
 }
 
 .formBody::-webkit-scrollbar {
@@ -154,105 +156,9 @@
   border-radius: 4px;
 }
 
-.formGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.fullWidth {
-  grid-column: 1 / -1;
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.label {
-  font-family: var(--font-base);
-  font-size: 13px;
-  color: var(--color-text-muted-light);
-  font-weight: 500;
-}
-
-.select, .textarea, .input {
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  color: var(--color-text-light);
-  font-family: var(--font-base);
-  font-size: 14px;
-  padding: 10px 12px;
-  transition: border-color 200ms ease;
-  outline: none;
-}
-
-.select:focus, .textarea:focus, .input:focus {
-  border-color: var(--color-accent);
-}
-
-.textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-
-/* Dark mode select options */
-.select option {
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-light);
-}
-
-.submitBtn {
-  width: 100%;
-  margin-top: 24px;
-  padding: 14px;
-  font-family: var(--font-heading);
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* ── Success State ── */
-.successState {
-  padding: 40px 24px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-
-.successIcon {
-  color: var(--color-accent);
-  margin-bottom: 8px;
-}
-
-.successState h4 {
-  font-family: var(--font-heading);
-  font-size: 24px;
-  color: var(--color-text-light);
-  margin: 0;
-}
-
-.successState p {
-  font-family: var(--font-base);
-  font-size: 14px;
-  color: var(--color-text-muted-light);
-  margin: 0 0 16px;
-  line-height: 1.5;
-}
-
 @media (max-width: 480px) {
   .widgetContainer {
     bottom: 16px;
     right: 16px;
-  }
-  .formGrid {
-    grid-template-columns: 1fr;
   }
 }

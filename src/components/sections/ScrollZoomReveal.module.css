@@ -65,7 +65,8 @@
 }
 
 .sideTextContainer {
-  width: 250px;
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 32px;
