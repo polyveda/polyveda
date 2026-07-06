@@ -18,7 +18,7 @@ export function ProblemSolution() {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.7, ease: [0.32, 0.72, 0, 1] }
+      transition: { duration: 0.7, ease: [0.32, 0.72, 0, 1] as const }
     }
   };
 
@@ -31,7 +31,7 @@ export function ProblemSolution() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+          transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] as const }}
         >
           <span className={styles.eyebrow}>The Polyveda Edge</span>
           <h2>Engineered for extreme demands.</h2>
