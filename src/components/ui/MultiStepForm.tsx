@@ -11,6 +11,7 @@ type StepAnswers = {
   industry: string;
   customIndustry: string;
   primaryChallenge: string;
+  customPrimaryChallenge: string;
   solutionType: string;
   estimatedVolume: string;
   projectDetails: string;
@@ -34,6 +35,7 @@ export function MultiStepForm({ source, theme = 'light', onSuccess }: MultiStepF
     industry: '',
     customIndustry: '',
     primaryChallenge: '',
+    customPrimaryChallenge: '',
     solutionType: '',
     estimatedVolume: '',
     projectDetails: '',
@@ -62,6 +64,7 @@ export function MultiStepForm({ source, theme = 'light', onSuccess }: MultiStepF
     setStatus('submitting');
     
     const finalIndustry = answers.industry === 'Other' ? answers.customIndustry : answers.industry;
+    const finalChallenge = answers.primaryChallenge === 'Other' ? answers.customPrimaryChallenge : answers.primaryChallenge;
 
     const data = {
       fullName: answers.fullName,
@@ -69,7 +72,7 @@ export function MultiStepForm({ source, theme = 'light', onSuccess }: MultiStepF
       email: answers.email,
       phone: answers.phone,
       industry: finalIndustry,
-      primaryChallenge: answers.primaryChallenge,
+      primaryChallenge: finalChallenge,
       solutionType: answers.solutionType,
       estimatedVolume: answers.estimatedVolume,
       projectDetails: answers.projectDetails || 'No additional details provided.',
@@ -192,6 +195,19 @@ export function MultiStepForm({ source, theme = 'light', onSuccess }: MultiStepF
                         </button>
                       ))}
                     </div>
+                    {answers.primaryChallenge === 'Other' && (
+                      <div className={styles.customInputWrapper}>
+                        <Input 
+                          name="customPrimaryChallenge" 
+                          label="Please specify your challenge" 
+                          value={answers.customPrimaryChallenge}
+                          onChange={(e) => updateAnswer('customPrimaryChallenge', e.target.value)}
+                          theme={theme}
+                          required 
+                        />
+                        <Button type="button" onClick={handleNext} disabled={!answers.customPrimaryChallenge}>Continue</Button>
+                      </div>
+                    )}
                   </motion.div>
                 )}
 
