@@ -165,6 +165,7 @@ export function Navbar() {
                 initial={false}
                 transition={{ type: 'spring', stiffness: 70, damping: 18, mass: 0.8 }}
               />
+              <span className={styles.logoText}>Polyveda</span>
             </motion.div>
           </Link>
         )}
