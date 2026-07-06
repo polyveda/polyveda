@@ -6,6 +6,9 @@ export interface IEnquiry extends Document {
   email: string;
   phone: string;
   industry: string;
+  primaryChallenge?: string;
+  solutionType?: string;
+  estimatedVolume?: string;
   projectDetails: string;
   source: 'ContactPage' | 'FloatingWidget';
   status: 'New' | 'Contacted' | 'Closed';
@@ -19,6 +22,9 @@ const EnquirySchema: Schema = new Schema(
     email: { type: String, required: true },
     phone: { type: String, required: true },
     industry: { type: String, required: true },
+    primaryChallenge: { type: String },
+    solutionType: { type: String },
+    estimatedVolume: { type: String },
     projectDetails: { type: String, required: true },
     source: { type: String, enum: ['ContactPage', 'FloatingWidget'], default: 'ContactPage' },
     status: { type: String, enum: ['New', 'Contacted', 'Closed'], default: 'New' },
