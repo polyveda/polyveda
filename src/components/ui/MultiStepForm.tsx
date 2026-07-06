@@ -168,6 +168,7 @@ export function MultiStepForm({ source, theme = 'light', onSuccess }: MultiStepF
                           label="Please specify your industry" 
                           value={answers.customIndustry}
                           onChange={(e) => updateAnswer('customIndustry', e.target.value)}
+                          theme={theme}
                           required 
                         />
                         <Button type="button" onClick={handleNext} disabled={!answers.customIndustry}>Continue</Button>
@@ -256,6 +257,7 @@ export function MultiStepForm({ source, theme = 'light', onSuccess }: MultiStepF
                         label="Full Name" 
                         value={answers.fullName}
                         onChange={(e) => updateAnswer('fullName', e.target.value)}
+                        theme={theme}
                         required 
                       />
                       <Input 
@@ -263,6 +265,7 @@ export function MultiStepForm({ source, theme = 'light', onSuccess }: MultiStepF
                         label="Company Name" 
                         value={answers.companyName}
                         onChange={(e) => updateAnswer('companyName', e.target.value)}
+                        theme={theme}
                         required 
                       />
                     </div>
@@ -273,6 +276,7 @@ export function MultiStepForm({ source, theme = 'light', onSuccess }: MultiStepF
                         label="Work Email" 
                         value={answers.email}
                         onChange={(e) => updateAnswer('email', e.target.value)}
+                        theme={theme}
                         required 
                       />
                       <Input 
@@ -281,6 +285,7 @@ export function MultiStepForm({ source, theme = 'light', onSuccess }: MultiStepF
                         label="Phone Number" 
                         value={answers.phone}
                         onChange={(e) => updateAnswer('phone', e.target.value)}
+                        theme={theme}
                         required 
                       />
                     </div>
