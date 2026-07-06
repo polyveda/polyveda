@@ -190,8 +190,19 @@
     bottom: auto;
   }
   .floatingLogo {
-    top: 24px;
-    left: 24px;
+    margin: 20px 0 0 20px;
+    padding: 4px 16px 4px 10px;
+    gap: 8px;
+    height: 40px;
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+  .logoImg {
+    height: 24px;
+    margin-bottom: -4px;
+  }
+  .logoText {
+    font-size: 15px;
   }
   .floatingNavWrapper {
     top: 16px;
@@ -234,8 +245,19 @@
     bottom: auto;
   }
   .floatingLogo {
-    top: 24px;
-    left: 24px;
+    margin: 20px 0 0 20px;
+    padding: 4px 16px 4px 10px;
+    gap: 8px;
+    height: 46px; /* Matches default menu height */
+    box-sizing: border-box;
+    border-radius: 23px;
+  }
+  .logoImg {
+    height: 28px;
+    margin-bottom: -4px;
+  }
+  .logoText {
+    font-size: 16px;
   }
   .floatingNavWrapper {
     top: 16px;
