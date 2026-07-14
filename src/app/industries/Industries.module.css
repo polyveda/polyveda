@@ -62,6 +62,11 @@
   position: relative;
   /* Ensure the container is tall enough to scroll through all items */
   padding-bottom: 120px;
+  background-color: var(--color-bg-light);
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 .stickyContainer {
@@ -100,7 +105,7 @@
 .imageOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(6,30,41,0.2), rgba(6,30,41,0.6));
+  background: linear-gradient(to bottom, rgba(6,30,41,0.05), rgba(6,30,41,0.2));
   z-index: 2;
   pointer-events: none;
 }
@@ -131,8 +136,9 @@
 }
 
 .blockInner {
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
   padding: 48px;
   border-radius: 8px;
   backdrop-filter: blur(10px);
@@ -149,7 +155,7 @@
   font-family: var(--font-heading);
   font-size: 14px;
   letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .blockTitleWrap {
@@ -166,7 +172,7 @@
   font-family: var(--font-heading);
   font-size: 24px;
   letter-spacing: 1px;
-  color: var(--color-text-light);
+  color: var(--color-bg-dark);
   margin: 0;
   text-transform: uppercase;
 }
@@ -176,7 +182,7 @@
   font-size: 32px;
   letter-spacing: -1px;
   line-height: 1.2;
-  color: var(--color-text-light);
+  color: var(--color-bg-dark);
   margin: 0 0 24px;
 }
 
@@ -184,14 +190,14 @@
   font-family: var(--font-base);
   font-size: 16px;
   line-height: 1.7;
-  color: var(--color-text-muted-light);
+  color: var(--color-text-muted-dark);
   margin: 0 0 20px;
 }
 
 .statBox {
   margin-top: 32px;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
@@ -208,7 +214,7 @@
   font-family: var(--font-heading);
   font-size: 11px;
   letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
 }
 

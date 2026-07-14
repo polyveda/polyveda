@@ -107,7 +107,11 @@
 /* ── Timeline ── */
 .timelineSection {
   padding: 120px 0;
-  background-color: var(--color-bg-dark);
+  background-color: var(--color-bg-light);
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 .timelineWrapper {
@@ -122,7 +126,7 @@
   bottom: 0;
   left: 50%;
   width: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   transform: translateX(-50%);
 }
 
@@ -145,7 +149,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  background-color: var(--color-bg-dark);
+  background-color: var(--color-bg-light);
   padding: 10px 0;
 }
 
@@ -161,7 +165,7 @@
   font-size: 16px;
   color: var(--color-bg-dark);
   font-weight: 600;
-  box-shadow: 0 0 0 8px var(--color-bg-dark);
+  box-shadow: 0 0 0 8px var(--color-bg-light);
 }
 
 .timelineContent {
@@ -213,7 +217,7 @@
   font-family: var(--font-heading);
   font-size: 32px;
   letter-spacing: -1px;
-  color: var(--color-text-light);
+  color: var(--color-bg-dark);
   margin: 0 0 16px;
 }
 
@@ -221,20 +225,21 @@
   font-family: var(--font-base);
   font-size: 16px;
   line-height: 1.6;
-  color: var(--color-text-muted-light);
+  color: var(--color-text-muted-dark);
   margin: 0;
 }
 
 /* ── Customization Specs (Bento Grid) ── */
 .specsSection {
   padding: 0 0 120px;
+  background-color: var(--color-bg-light);
 }
 
 .sectionTitle {
   font-family: var(--font-heading);
   font-size: 40px;
   letter-spacing: -1px;
-  color: var(--color-text-light);
+  color: var(--color-bg-dark);
   margin: 0 0 48px;
   text-align: center;
 }
@@ -259,17 +264,26 @@
 }
 
 .bentoCard {
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   padding: 40px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.03);
 }
 
 .bentoCardDark {
   background-color: rgba(6, 30, 41, 0.8);
   border-color: rgba(95, 149, 152, 0.2);
+}
+
+.bentoCardDark .bentoLargeText {
+  color: var(--color-text-light);
+}
+
+.bentoCardDark p {
+  color: var(--color-text-muted-light);
 }
 
 .bentoIcon {
@@ -290,14 +304,14 @@
   font-family: var(--font-heading);
   font-size: 48px;
   letter-spacing: -2px;
-  color: var(--color-text-light);
+  color: var(--color-bg-dark);
   margin: 0 0 16px;
 }
 
 .bentoCard p {
   font-family: var(--font-base);
   font-size: 15px;
-  color: var(--color-text-muted-light);
+  color: var(--color-text-muted-dark);
   line-height: 1.6;
   margin: 0;
 }
@@ -418,7 +432,8 @@
 /* ── Products We Make ── */
 .productsWeSection {
   padding: clamp(48px, 6vw, 80px) 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  background-color: var(--color-bg-light);
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
 .productLinkGrid {
@@ -431,21 +446,21 @@
 .productLink {
   display: inline-block;
   padding: 12px 24px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.02);
+  border: 1px solid rgba(0,0,0,0.12);
   border-radius: 2px;
-  color: rgba(255,255,255,0.8);
+  color: var(--color-bg-dark);
   font-family: var(--font-base);
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .productLink:hover {
-  background: rgba(95,149,152,0.12);
+  background: rgba(95,149,152,0.1);
   border-color: var(--color-accent);
   color: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }

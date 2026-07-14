@@ -129,8 +129,10 @@
 }
 
 .cardInner {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   padding: clamp(24px, 3vw, 40px);
   display: flex;
@@ -146,12 +148,12 @@
 }
 
 .card:hover .cardInner {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(95, 149, 152, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(95, 149, 152, 0.45);
   box-shadow:
-    0 0 0 0.5px rgba(95, 149, 152, 0.2),
+    0 0 0 0.5px rgba(95, 149, 152, 0.3),
     0 24px 60px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Meta row */

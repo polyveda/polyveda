@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(95, 149, 152, 0.95);
   backdrop-filter: blur(8px);
   border-radius: 12px;
   margin: 24px;
@@ -35,7 +35,7 @@
   font-family: var(--font-heading);
   font-size: 20px;
   font-weight: 700;
-  color: var(--color-text-dark);
+  color: var(--color-bg-dark);
   letter-spacing: -0.5px;
 }
 
@@ -47,8 +47,8 @@
 }
 
 .morphedMenu {
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-light);
+  background-color: var(--color-bg-light);
+  color: var(--color-bg-dark);
   overflow: hidden;
   position: absolute;
   box-shadow: 0 10px 40px rgba(6, 30, 41, 0.2);
@@ -80,7 +80,7 @@
   font-family: var(--font-heading);
   font-size: 46px;
   font-weight: 500;
-  color: var(--color-text-light);
+  color: var(--color-bg-dark);
   text-decoration: none;
   letter-spacing: -1px;
   line-height: 1.1;
@@ -107,7 +107,7 @@
 .footerLink {
   font-family: var(--font-base);
   font-size: 18px;
-  color: var(--color-text-light);
+  color: var(--color-bg-dark);
   text-decoration: none;
   font-weight: 500;
 }
@@ -117,7 +117,7 @@
   left: 0;
   bottom: -2px;
   height: 2px;
-  background-color: var(--color-text-light);
+  background-color: var(--color-bg-dark);
 }
 
 .menuToggleBtn {
@@ -164,8 +164,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
-  color: var(--color-text-light);
+  background-color: var(--color-bg-light);
+  color: var(--color-bg-dark);
   font-size: 18px;
   font-weight: 500;
   font-family: var(--font-base);
@@ -177,8 +177,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-bg-light);
-  color: var(--color-bg-dark);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
   font-size: 18px;
   font-weight: 500;
   font-family: var(--font-base);
