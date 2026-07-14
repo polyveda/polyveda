@@ -206,7 +206,7 @@ export function Navbar() {
                           xmlns="http://www.w3.org/2000/svg"
                           style={{ flexShrink: 0, minWidth: '48px' }}
                         >
-                          <path d="M0 31H103M103 31L73.5 1.5M103 31L73.5 60.5" stroke="var(--color-bg-dark)" strokeWidth="4" vectorEffect="non-scaling-stroke"/>
+                          <path d="M0 31 H103 M73.5 1.5 L103 31 L73.5 60.5" stroke="var(--color-bg-dark)" strokeWidth="4" strokeLinejoin="miter" strokeLinecap="square" vectorEffect="non-scaling-stroke"/>
                         </svg>
                       </motion.div>
                       
