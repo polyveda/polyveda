@@ -151,12 +151,6 @@
   margin-bottom: 24px;
 }
 
-.blockIndex {
-  font-family: var(--font-heading);
-  font-size: 14px;
-  letter-spacing: 4px;
-  color: rgba(0, 0, 0, 0.3);
-}
 
 .blockTitleWrap {
   display: flex;

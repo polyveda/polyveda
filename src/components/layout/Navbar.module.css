@@ -11,13 +11,33 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background-color: rgba(95, 149, 152, 0.95);
-  backdrop-filter: blur(8px);
-  border-radius: 12px;
   margin: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  position: relative;
+  isolation: isolate;
+
+  /* Frosted glass — visible milky white surface */
+  background: rgba(240, 244, 245, 0.72);
+
+  /* Strong blur + saturation boost to make what's behind it vivid */
+  backdrop-filter: blur(20px) saturate(200%) brightness(1.05);
+  -webkit-backdrop-filter: blur(20px) saturate(200%) brightness(1.05);
+
+  /* Single clean white border — the edge that defines glass */
+  border: 1px solid rgba(255, 255, 255, 0.30);
+
+  /* One ambient shadow — no stacking */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.20), 0 2px 8px rgba(0, 0, 0, 0.10);
+
+  transition: background 0.3s cubic-bezier(0.32, 0.72, 0, 1),
+              box-shadow 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
+
+.floatingLogo:hover {
+  background: rgba(240, 244, 245, 0.88);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.24), 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
 
 .logoImg {
   height: 55px;
@@ -29,6 +49,8 @@
   user-select: none;
   clip-path: inset(0px 0px 35% 0px);
   margin-bottom: -9px;
+  position: relative;
+  z-index: 2;
 }
 
 .logoText {
@@ -37,6 +59,8 @@
   font-weight: 700;
   color: var(--color-bg-dark);
   letter-spacing: -0.5px;
+  position: relative;
+  z-index: 2;
 }
 
 .floatingNavWrapper {
@@ -87,6 +111,12 @@
   white-space: nowrap;
 }
 
+.navLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 12px;
+  border-radius: 4px;
+}
+
 .footerLinksWrapper {
   margin-left: 40px;
   margin-bottom: 40px;
@@ -112,6 +142,12 @@
   font-weight: 500;
 }
 
+.footerLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
 .footerHoverLine {
   position: absolute;
   left: 0;
@@ -133,6 +169,11 @@
   cursor: pointer;
   z-index: 10;
   padding: 0;
+}
+
+.menuToggleBtn:focus-visible {
+  outline: 2px solid var(--color-bg-dark);
+  outline-offset: 4px;
 }
 
 .btnSlider {
@@ -190,19 +231,21 @@
     bottom: auto;
   }
   .floatingLogo {
-    margin: 14px 0 0 20px;
-    padding: 6px 16px 6px 10px;
-    gap: 10px;
-    height: 52px;
+    margin: 14px 0 0 16px;
+    padding: 5px 14px 5px 8px;
+    gap: 8px;
+    height: 48px;
     box-sizing: border-box;
-    border-radius: 26px;
+    border-radius: 24px;
   }
   .logoImg {
-    height: 34px;
-    margin-bottom: -6px;
+    height: 40px;
+    margin-bottom: -7px;
   }
   .logoText {
-    font-size: 18px;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
   }
   .floatingNavWrapper {
     top: 16px;
@@ -245,19 +288,21 @@
     bottom: auto;
   }
   .floatingLogo {
-    margin: 19px 0 0 20px;
+    margin: 16px 0 0 20px;
     padding: 6px 16px 6px 10px;
     gap: 10px;
-    height: 56px;
+    height: 54px;
     box-sizing: border-box;
-    border-radius: 28px;
+    border-radius: 27px;
   }
   .logoImg {
-    height: 38px;
-    margin-bottom: -6px;
+    height: 42px;
+    margin-bottom: -7px;
   }
   .logoText {
-    font-size: 19px;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
   }
   .floatingNavWrapper {
     top: 16px;

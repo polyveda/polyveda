@@ -9,7 +9,6 @@ import styles from './Industries.module.css';
 const INDUSTRIES = [
   { 
     id: 'automotive', 
-    index: '01', 
     icon: Car, 
     title: 'Automotive', 
     headline: 'Just-In-Time means zero tolerance for damaged parts.', 
@@ -21,7 +20,6 @@ const INDUSTRIES = [
   },
   { 
     id: 'ecommerce', 
-    index: '02', 
     icon: ShoppingCart, 
     title: 'E-Commerce & Retail', 
     headline: 'Fulfillment centers run on space and speed.', 
@@ -33,7 +31,6 @@ const INDUSTRIES = [
   },
   { 
     id: 'electronics', 
-    index: '03', 
     icon: Cpu, 
     title: 'Electronics & Semiconductor', 
     headline: 'One static discharge can write off a PCB worth thousands.', 
@@ -45,7 +42,6 @@ const INDUSTRIES = [
   },
   { 
     id: 'healthcare', 
-    index: '04', 
     icon: ShieldPlus, 
     title: 'Healthcare & Pharma', 
     headline: 'Cold chain requires packaging that survives the freezer.', 
@@ -57,7 +53,6 @@ const INDUSTRIES = [
   },
   { 
     id: 'construction', 
-    index: '05', 
     icon: HardHat, 
     title: 'Construction', 
     headline: 'Protect the surface, not just the component.', 
@@ -69,7 +64,6 @@ const INDUSTRIES = [
   },
   { 
     id: 'logistics', 
-    index: '06', 
     icon: Briefcase, 
     title: 'Business Workflow', 
     headline: 'Returnable packaging is a system, not a product.', 
@@ -180,7 +174,6 @@ export default function IndustriesPage() {
                   <div className={styles.blockInner}>
                     
                     <div className={styles.blockHeader}>
-                      <span className={styles.blockIndex}>{ind.index}</span>
                       <div className={styles.blockTitleWrap}>
                         <Icon className={styles.blockIcon} size={24} strokeWidth={1.5} />
                         <h2 className={styles.blockTitle}>{ind.title}</h2>

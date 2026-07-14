@@ -5,10 +5,10 @@
   --color-surface-light: #FFFFFF; /* Pure White */
   --color-surface-dark: #1D546D; /* Ocean Blue */
   
-  --color-text-dark: #0B1215; /* Slate Black */
+  --color-text-dark: #061E29; /* Deep Navy to replace pure/slate black */
   --color-text-light: #F3F4F4; /* Off-White */
   
-  --color-text-muted-dark: #4A5568; /* Muted Gray for light backgrounds */
+  --color-text-muted-dark: rgba(6, 30, 41, 0.75); /* Tinted Deep Navy for perfect harmony on light backgrounds */
   --color-text-muted-light: rgba(243, 244, 244, 0.7); /* Muted Off-White for dark backgrounds */
   
   --color-accent: #5F9598; /* Muted Teal */
